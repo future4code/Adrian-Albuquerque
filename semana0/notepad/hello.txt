@@ -8,3 +8,4 @@ git commit -m "mensagem-a-ser-exibida" = manda o repositorio local para o github
 git init = cria repositorio local 
 git branch = cria ramificação do projeto
 git push origin 'nome-da-branch' = envia para sua conta do github a branch desejada
+
