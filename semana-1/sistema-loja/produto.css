@@ -1,0 +1,17 @@
+form {
+    border: 2px #ccc solid;
+    align-items: center;
+    width: 250px;
+    padding: 5px;
+    text-align: center;
+    margin: 0 auto;
+}
+h2 {
+    text-align: center;
+}
+.form-add {
+    margin-top: 10px;
+}
+body {
+    background-color: #ccc;
+}

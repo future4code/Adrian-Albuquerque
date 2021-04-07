@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Adicionar Produto</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="produto.css">
 </head>
+
 <body>
-    <div>
-        <p><strong>UNIBRATEC</strong></p>
+    <div class="header">
+        <h1><strong>UNIBRATEC</strong></h1>
     </div>
-    
-    <div>
+
+    <div class="navigation">
         <a href="./index.html">Página Inicial</a>
         <a href="./ctrl-estoque.html">Controle de Estoque</a>
         <a href="./add-produto.html">Adicionar Produto</a>
         <a href="./funcionarios.html">Funcionários</a>
     </div>
-    
     <h2>Adicionar Produto</h2>
     <form action="#">
         <div>
@@ -30,13 +33,13 @@
             <!-- Adicione o id apropriado para o input abaixo -->
             <input type="text" id="descProdut" name="descrição">
         </div>
-        
+
         <div>
             <label for="preco">Preço (em R$): </label>
             <!-- Adicione o id apropriado e o type para receber números abaixo -->
             <input type="number" id="addPreco" name="preço">
         </div>
-        
+
         <div>
             <!-- Preencha as propriedades necessárias para os elementos abaixo -->
             <label>Quantidade disponível: </label>
@@ -47,8 +50,14 @@
             <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
             <button type="submit">Adicionar</button>
         </div>
-
     </form>
-
+    <footer>
+        <div id="icon">
+            <p>Siga-nos nas redes sociais!</p>
+            <img src="https://image.flaticon.com/icons/png/512/25/25305.png"/>
+            <img src="https://image.flaticon.com/icons/png/512/25/25425.png"/>
+            <img src="https://image.flaticon.com/icons/png/512/8/8800.png"/>
+        </footer>
 </body>
+
 </html>
