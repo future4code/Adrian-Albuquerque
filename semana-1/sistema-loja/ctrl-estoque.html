@@ -1,105 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Controle de Estoque</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="cEstoque.css">
 </head>
+
 <body>
-    <div>
-        <p>
-            <strong>
-                UNIBRATEC
-            </strong>
-        </p>
+    <div class="header">
+        <h1><strong>UNIBRATEC</strong></h1>
     </div>
-    
-    <div>
+
+    <div class="navigation">
         <a href="./index.html">Página Inicial</a>
         <a href="./ctrl-estoque.html">Controle de Estoque</a>
         <a href="./add-produto.html">Adicionar Produto</a>
         <a href="./funcionarios.html">Funcionários</a>
+        <a href="./venda.html">Vendas</a>
+        <a href="./historico.html">Historico de Vendas</a>
     </div>
+    <div class="linha">
+        <h2>Controle de Estoque</h2>
+        <div class="loja">
+            <table>          
+                <tr>
+                    <th>Foto</th>
+                    <th>Descrição</th>
+                    <th>Preço (R$)</th>
+                    <th>Quantidade disponível</th>
+                </tr>
 
-    <h2>Controle de Estoque</h2>
-<div class="linha">
-    <div>
-    <table>
-        <tr>
-            <th>Foto</th>
-            <th>Descrição</th>
-            <th>Preço (R$)</th>
-            <th>Quantidade disponível</th>
-        </tr>
+                <tr>
+                    <td><img src="./img/3080.jpg" alt="RTX 3080"/></td>
+                    <td>RTX 3080</td>
+                    <td>R$13,899</td>
+                    <td>2</td>
+                </tr>
 
-        <tr>
-            <td><img src="./img/3080.jpg" alt="RTX 3080"/></td>
-            <td>RTX 3080</td>
-            <td>R$13,899</td>
-            <td>2</td>
-        </tr>
+                <tr>
+                    <td><img src="./img/3070.jpeg" alt="RTX 3070" /></td>
+                    <td>RTX 3070</td>
+                    <td>R$9.499</td>
+                    <td>8</td>
+                </tr>
 
-        <tr>
-            <td><img src="./img/3070.jpeg" alt="RTX 3070"/></td>
-            <td>RTX 3070</td>
-            <td>R$9.499</td>
-            <td>8</td>
-        </tr>
+                <tr>
+                    <td><img src="./img/3060.png" alt="RTX 3060" /></td>
+                    <td>RTX 3060</td>
+                    <td>R$ 8399</td>
+                    <td>14</td>
+                </tr>
 
-        <tr>
-            <td><img src="./img/3060.png" alt="RTX 3060"/></td>
-            <td>RTX 3060</td>
-            <td>R$ 8399</td>
-            <td>14</td>
-        </tr>
+                <tr>
+                    <td><img src="./img/3050.jpg" alt="RTX 3050" /></td>
+                    <td>RTX 3050</td>
+                    <td>R$ 6499</td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td><img src="./img/2080ti.png" alt="RTX 2080TI"></td>
+                    <td>RTX 2080TI</td>
+                    <td>R$ 11499,90</td>
+                    <td>15</td>
+                </tr>
 
-        <tr>
-            <td><img src="./img/3050.jpg" alt="RTX 3050"/></td>
-            <td>RTX 3050</td>
-            <td>R$ 6499</td>
-            <td>13</td>
-        </tr>
-        <tr>
-            <td><img src="./img/2080ti.png" alt="RTX 2080TI"></td>
-            <td>RTX 2080TI</td>
-            <td>R$ 11499,90</td>
-            <td>15</td>
-        </tr>
-        
-        <!-- Crie mais uma linha desta tabela abaixo \/ -->
-        <tr>
-            <th>Foto</th>
-            <th>Descrição</th>
-            <th>Preço</th>
-            <th>Quantidade Disponivel</th>
-        </tr>
-        <tr>
-            <td><img src="./img/11400F.jpg" alt="I5 11400F"></td>
-            <td>Intel i5 11400F</td>
-            <td>R$1499,90</td>
-            <td>295</td>
-        </tr>
-        <tr>
-            <td><img src="./img/9900k.jpg" alt="I9 9900K"></td>
-            <td>i9 9900K</td>
-            <td>R$3629,90</td>
-            <td>200</td>
-        </tr>
-        <tr>
-            <td><img src="./img/5600X.jpg" alt="R5 3600X"></td>
-            <td>Ryzen 5 5600X</td>
-            <td>R$2319,90</td>
-            <td>12</td>
-        </tr>
-        <tr>
-            <td><img src="./img/5900X.jpg" alt="R9 5900X"></td>
-            <td>Ryzen 9 5900X</td>
-            <td>R$4099,89</td>
-            <td>52</td>
-        </tr>
-    </table>
+                <!-- Crie mais uma linha desta tabela abaixo \/ -->
+                <tr>
+                    <th>Foto</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Quantidade Disponivel</th>
+                </tr>
+                <tr>
+                    <td><img src="./img/11400F.jpg" alt="I5 11400F"></td>
+                    <td>Intel i5 11400F</td>
+                    <td>R$1499,90</td>
+                    <td>295</td>
+                </tr>
+                <tr>
+                    <td><img src="./img/9900k.jpg" alt="I9 9900K"></td>
+                    <td>i9 9900K</td>
+                    <td>R$3629,90</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td><img src="./img/5600X.jpg" alt="R5 3600X"></td>
+                    <td>Ryzen 5 5600X</td>
+                    <td>R$2319,90</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td><img src="./img/5900X.jpg" alt="R9 5900X"></td>
+                    <td>Ryzen 9 5900X</td>
+                    <td>R$4099,89</td>
+                    <td>52</td>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
 </body>
 </html>
