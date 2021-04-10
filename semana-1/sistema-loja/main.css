@@ -1,3 +1,6 @@
+/* 
+* CONFIGURAÇÕES GERAIS
+*/
 html, body, figure, img, div, input, textarea, p, h1, h2, h3, h4, h5, h6, ul, li, a, main{
     margin: 0;
     padding: 0;
@@ -61,3 +64,101 @@ footer img {
     width: 40px;
     margin: 15px;
 }
+
+/* INDEX */
+
+.box1, .box2 {
+    align-items: center;
+    height: 200px;
+    margin: 0 auto;
+}
+.box1 {
+    padding: 20px;
+    font-size: 1.2em;
+    width: 350px;
+    background-color: yellowgreen;
+}
+.box2{
+    padding: 20px;
+    font-size: 1.2em;
+    margin-top: 10px;
+    width: 350px;
+    background-color: yellowgreen;
+}
+.box1 h2, .box2 h2 {
+    text-align: center;
+}
+
+/* CONTROLE DE ESTOQUE */
+
+.loja img {
+    width: 50px;
+}
+.loja tr {
+    text-align: center;
+}
+.loja tr th {
+    align-items: center;
+    border: 2px black solid;
+}
+td {
+    border: 3px red solid;
+}
+.tabela-produto{
+    margin-top: 20px;
+    margin: 0 auto;
+}
+.linha h2 {
+    text-align: center;
+}
+/* HISTORICO */
+
+
+
+
+/* FUNCIONARIOS */
+
+#linhaFunc ul li, #linhaFunc h2{
+    text-align: center;
+    padding: 5px;
+    border: solid 1px;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 250px;
+    background-color: blanchedalmond;
+}
+#linhaFunc {
+background-color: blanchedalmond;
+}
+#bColor {
+    background-color: blanchedalmond;
+}
+#nav-func {
+    background-color: rgb(221, 203, 176);
+}
+
+/* VENDA */
+
+/* ADICIONAR PRODUTOS */
+
+.formularioP {
+    border: 2px #ccc solid;
+    align-items: center;
+    width: 250px;
+    padding: 5px;
+    text-align: center;
+    margin: 0 auto;
+}
+#addProdh2 {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.form-add {
+    margin-top: 10px;
+}
+#bodyAdd {
+    background-color: #ccc;
+}
+
+
