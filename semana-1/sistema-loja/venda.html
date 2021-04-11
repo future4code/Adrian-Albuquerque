@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,46 +9,88 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="venda.css">
 </head>
+
 <body>
     <!-- <div class="linha"> -->
-        <div class="header">
-            <h1>UNIBRATEC</h1>
-
-        </div>
-        <div class="navigation">
-            <a href="./index.html">Página Inicial</a>
-            <a href="./ctrl-estoque.html">Controle de Estoque</a>
-            <a href="./add-produto.html">Adicionar Produto</a>
-            <a href="./funcionarios.html">Funcionários</a>
-            <a href="./venda.html">Vendas</a>
-            <a href="./historico.html">Historico de Vendas</a>
-        </div>
-        <table>
-            <h2>Vendas</h2>
-            <tr>
-                <td>Vendedor <input type="text"></td>
-            </tr>
-            <tr>
-                <td>Produto <input type="text"></td>
-            </tr>
-            <tr>
-                <td>Desconto <input type="text"></td>
-            </tr>
-            <tr>
-                <td>Horario <input type="text"></td>
-            </tr>
-            <tr>
-                <td>Pagamento <input type="text"></td>
-            </tr>
-        </table>
+    <div class="header">
+        <h1>UNIBRATEC</h1>
     </div>
-    <footer>
-        <div class="icon">
-            <p>Siga-nos nas redes sociais!</p>
-            <img src="https://image.flaticon.com/icons/png/512/25/25305.png"/>
-            <img src="https://image.flaticon.com/icons/png/512/25/25425.png"/>
-            <img src="https://image.flaticon.com/icons/png/512/8/8800.png"/>
+    <div class="navigation">
+        <a href="./index.html">Página Inicial</a>
+        <a href="./ctrl-estoque.html">Controle de Estoque</a>
+        <a href="./add-produto.html">Adicionar Produto</a>
+        <a href="./funcionarios.html">Funcionários</a>
+        <a href="./venda.html">Vendas</a>
+        <div class="loja vendas">
+            <table class="tabela-produto">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Funcionário</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th>Cliente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0001</td>
+                        <td>Aline Diani</td>
+                        <td>RTX 3080</td>
+                        <td>1</td>
+                        <td>15/06/2020</td>
+                        <td>R$6432,43</td>
+                        <td>Edison Batista</td>
+                    </tr>
+                    <tr>
+                        <td>0002</td>
+                        <td>Adrian Américo</td>
+                        <td>Ryzen 5900X</td>
+                        <td>2</td>
+                        <td>14/02/2021</td>
+                        <td>R$4099,89</td>
+                        <td>Adriano Albuquerque</td>
+                    </tr>
+                    <tr>
+                        <td>0003</td>
+                        <td>Alan Albuquerque</td>
+                        <td>i9 9900K</td>
+                        <td>1</td>
+                        <td>20/03/2021</td>
+                        <td>R$3629,90</td>
+                        <td>Felipe Duarte</td>
+                    </tr>
+                    <tr>
+                        <td>0004</td>
+                        <td>Ana Júlia</td>
+                        <td>RTX 3070</td>
+                        <td>6</td>
+                        <td>23/07/2020</td>
+                        <td>R$9.499,90</td>
+                        <td>Paulo Cesar</td>
+                    </tr>
+                    <tr>
+                        <td>0005</td>
+                        <td>Nathalia Nogueira</td>
+                        <td>RTX 3050</td>
+                        <td>4</td>
+                        <td>20/02/2021</td>
+                        <td>R$ 6499</td>
+                        <td>Juliana Oliveira</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </footer>
+        <footer>
+            <div class="icon">
+                <p>Siga-nos nas redes sociais!</p>
+                <img src="https://image.flaticon.com/icons/png/512/25/25305.png" />
+                <img src="https://image.flaticon.com/icons/png/512/25/25425.png" />
+                <img src="https://image.flaticon.com/icons/png/512/8/8800.png" />
+            </div>
+        </footer>
 </body>
+
 </html>
