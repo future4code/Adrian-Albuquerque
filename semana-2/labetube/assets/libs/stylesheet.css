@@ -1,0 +1,53 @@
+html, body, figure, img, div, input, textarea, p, h1, h2, h3, h4, h5, h6, ul, li, a, main{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+body {
+    width: 100%;
+    height: 100vw;
+}
+header {
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-column: 1 / -1;
+
+}
+header div {
+    margin: 0 20px;
+}
+.pesquisa {
+    height: 25px;
+}
+.main-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 70px fr 70px;
+    height: 100%;
+    margin: 0 auto;
+}
+footer {
+    grid-row: 5;
+    grid-column: span 6;
+    background-color: red;
+    padding: 30px;
+}
+main {
+    grid-row: 2 / 5;
+    grid-column: 1 / span 4;
+    grid-row: 10px;
+    max-width: 98%;
+    background-color: beige;
+}
+article video{
+    max-width: 100%;
+}
+
+article {
+    width: 200px;
+}
