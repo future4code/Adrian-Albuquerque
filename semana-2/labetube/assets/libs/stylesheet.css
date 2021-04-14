@@ -7,7 +7,7 @@ html, body, figure, img, div, input, textarea, p, h1, h2, h3, h4, h5, h6, ul, li
 }
 body {
     width: 100%;
-    height: 100vw;
+    height: 100vh;
 }
 header {
     background-color: antiquewhite;
@@ -15,39 +15,83 @@ header {
     align-items: center;
     justify-content: space-between;
     grid-column: 1 / -1;
-
 }
 header div {
-    margin: 0 20px;
+    margin: 0 38px;
 }
 .pesquisa {
     height: 25px;
 }
 .main-container {
     display: grid;
-    width: 100%;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 70px fr 70px;
     height: 100%;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 70px 1fr 70px;
     margin: 0 auto;
 }
 footer {
-    grid-row: 5;
+    grid-row: 3;
     grid-column: span 6;
+    text-align: center;
+    justify-content: center;
     background-color: red;
-    padding: 30px;
 }
 main {
-    grid-row: 2 / 5;
-    grid-column: 1 / span 4;
-    grid-row: 10px;
-    max-width: 98%;
-    background-color: beige;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column: 1 / -1;
+    width: 95%;
+    margin: 10px auto;
+    row-gap: 10px;
+    align-items: center;
+    column-gap: 10px;
 }
-article video{
-    max-width: 100%;
+.video {
+    border: 1px solid black;
+    margin-top: 10px;
+    text-align: center;
+    width: 95%;
+    display: grid;
+    justify-content: center;
+}
+.video video {
+    max-width: 98%;
+    margin: 10px auto;
+    cursor: pointer;
 }
 
-article {
-    width: 200px;
+footer div {
+    display: flex;
+    color: white;
+    margin: 0 auto;
+    padding: 15px;
+    justify-content: center;
+    text-align: center;
+    max-width: 100%;
+}
+main article:nth-child(1), main article:nth-child(5) {
+    margin-left: 10px;
+}
+
+.videos {
+    max-width: 95%;
+    margin: 20px auto;
+}
+.main-video {
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: center;
+}
+.home {
+    padding: 15px;
+    background-color: rgb(255, 213, 213);
+    border-radius: 15px;
+}
+.main-video h2 {
+    margin-left: 20px;
+    padding: 5px;
+    height: 4px;
 }
