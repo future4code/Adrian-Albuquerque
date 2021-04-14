@@ -1,0 +1,77 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+    color: white;
+}
+*{
+    box-sizing: border-box;
+}
+.green-background {
+    background-color: green;
+}
+
+.yellow-background {
+    background-color: yellow;
+}
+
+.pink-background {
+    background-color: fuchsia;
+}
+
+.blue-background {
+    background-color: blue;
+}
+
+.red-background {
+    background-color: red;
+}
+
+.lightgreen-background {
+    background-color: lightgreen;
+}
+
+.purple-background {
+    background-color: purple;
+}
+.main-container {
+    display: grid;
+    grid-template-columns: 65% 30%;
+    max-width: 100vw;
+    margin: 0 auto;
+
+}
+.green-background {
+    display: grid;
+    grid-column: 1 / 3;
+}
+
+.top-container {
+    display: grid;
+
+}
+.middle-container {
+
+}
+div {
+    display: grid;
+    width: 100%;
+    height: 100%;
+}
+
+.botao-nav {
+    padding: 20px;
+    background-color: pink;
+}
+.icone-e-texto {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icone {
+    max-width: 5px;
+    display: flex;
+
+}
