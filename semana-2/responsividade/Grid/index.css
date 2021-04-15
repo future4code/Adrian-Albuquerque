@@ -1,0 +1,133 @@
+Gerais body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+div {
+    border: 1px solid black;
+    text-align: center;
+    justify-content: center;
+}
+
+#first-block {
+    background-color: red;
+    display: grid;
+    grid-column: 1 / -1;
+}
+
+.blue-block {
+    background-color: blue;
+}
+
+.yellow-block {
+    background-color: yellow;
+}
+
+.green-block {
+    background-color: green;
+}
+
+.black-block {
+    background-color: black;
+    color: white;
+}
+
+.white-block {
+    background-color: white;
+    grid-row: 5;
+}
+
+.black-block1,
+.black-block2 {
+    background-color: black;
+    color: white;
+}
+
+/* Desktop */
+
+@media screen and (min-device-width : 800px) {
+
+    #main-container {
+        margin: 10px auto;
+        max-width: 1200px;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+    }
+
+    #main-container div {
+        padding: 25px;
+        margin: 10px;
+    }
+
+    #main-container .black {
+        grid-column: 1 / 4;
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .black {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+/* Smarthphone */
+
+@media screen and (min-device-width : 320px) and (max-device-width : 420px) {
+
+    #main-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(11, 1fr);
+        justify-content: center;
+    }
+
+    #main-container div {
+        justify-content: center;
+    }
+
+    #first-block {
+        background-color: red;
+        display: grid;
+        grid-column: 1;
+    }
+
+    .blue-block {
+        background-color: blue;
+    }
+
+    .yellow-block {
+        background-color: yellow;
+
+    }
+
+    .green-block {
+        background-color: green;
+    }
+
+    .black-block {
+        display: grid;
+        background-color: black;
+        color: white;
+    }
+
+    .black-block1,
+    .black-block2 {
+        background-color: black;
+        color: white;
+    }
+
+    .white-block {
+        background-color: white;
+        grid-column: 1;
+        grid-row: auto;
+    }
+}
