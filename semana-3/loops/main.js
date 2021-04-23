@@ -42,7 +42,7 @@ for (let numero of lista) {
  * Imprima o index e os valores do array da seguinte forma: "O elemento do index I é: numero"
  * escreva um programa que imprima no console o maior e o menor número contidos no array original
  */
-console.log("EX3")
+console.log("a)")
 let arrayOriginal = [80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55]
 
 for (const valores of arrayOriginal) {
