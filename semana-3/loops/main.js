@@ -36,17 +36,35 @@ for (let numero of lista) {
 
 /* a) escreva um programa que:
  * Imprima cada um dos valores do array original.
- * Imprima cada um dos valores do array original divididos por 10
- * Crie um novo array contendo, somente, os números pares do array original
+ * b) Imprima cada um dos valores do array original divididos por 10
+ * c) Crie um novo array contendo, somente, os números pares do array original
  * Imprima esse novo array
- * Imprima o index e os valores do array da seguinte forma: "O elemento do index I é: numero"
+ * d) Imprima o index e os valores do array da seguinte forma: "O elemento do index I é: numero"
  * escreva um programa que imprima no console o maior e o menor número contidos no array original
  */
+
 console.log("a)")
 let arrayOriginal = [80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55]
 
 for (const valores of arrayOriginal) {
     console.log(valores)
 }
+
+console.log("b)")
+for (const valores of arrayOriginal) {
+    console.log(valores / 10)
+}
+
+console.log("c)")
+
+
+console.log("Oi!")
+
+function minhaFuncao(quantidade) {
+    for (let i = 1; i <= quantidade; i++) {
+        console.log(i*2)
+    }
+}
+minhaFuncao(5)
 
 // -------------------- Desafio 1 --------------------
