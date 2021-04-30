@@ -9,6 +9,7 @@ function inverteArray(array) {
 
 function retornaNumerosParesElevadosADois (array) {
    // implemente sua lógica aqui
+   
 }
 
 //Exercício 3
