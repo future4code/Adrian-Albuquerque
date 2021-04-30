@@ -18,7 +18,7 @@ function retornaNumerosParesElevadosADois(array) {
          arrayPar.push(array[i])
       }
    }
-   for(let i = 0;i < arrayPar.length; i++) {
+   for (let i = 0; i < arrayPar.length; i++) {
       arrayPar[i] = arrayPar[i] ** 2
    }
    return arrayPar
@@ -28,25 +28,37 @@ function retornaNumerosParesElevadosADois(array) {
 
 function retornaNumerosPares(array) {
    // implemente sua lógica aqui
+   let arrayPares = [];
+   for (let i = 0; i < array.length; i++) {
+      if (array[i] % 2 === 0) {
+         arrayPares.push(array[i])
+      }
+   }
+   return arrayPares
 }
 
 //Exercício 4
 
 function retornaMaiorNumero(array) {
    // implemente sua lógica aqui
+   return Math.max.apply(null, array)
 }
+
 
 //Exercício 5
 
 function retornaQuantidadeElementos(array) {
    // implemente sua lógica aqui
+   return array.length;
 }
 
 //Exercício 6
 
 function retornaExpressoesBooleanas() {
    // implemente sua lógica aqui
+   
 }
+
 
 //Exercício 7
 
