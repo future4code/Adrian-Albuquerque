@@ -2,7 +2,8 @@
 
 function inverteArray(array) {
   // implemente sua lógica aqui
-  return array = array.reverse()
+  let arrayInvertido = array.splice(0).reverse()
+  return arrayInvertido
 }
 
 //Exercício 2
