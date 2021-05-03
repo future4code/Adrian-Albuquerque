@@ -106,7 +106,8 @@ function comparaDoisNumeros(num1, num2) {
    // implemente sua lógica aqui
    let maiorNumero;
    let menorNumero;
-   let maiorDivisivel;
+   let maiorDivisivelporMenor;
+
    if (num1 > num2) {
       maiorNumero = num1;
       menorNumero = num2;
@@ -114,15 +115,20 @@ function comparaDoisNumeros(num1, num2) {
       maiorNumero = num2;
       menorNumero = num1;
    }
+   if(maiorNumero % menorNumero === 0) {
+      maiorDivisivelporMenor = true;
+   }
 
-
+   const diferenca = maiorNumero - menorNumero;
+   
+   return {maiorNumero: maiorNumero, maiorDivisivelporMenor: maiorDivisivelporMenor, diferenca: diferenca}
 }
 
 // Exercício 10
 
 function segundoMaiorEMenor(array) {
    // implemente sua lógica aqui
-   let segundoArray = [];
+   let novoarray = [];
 
 }
 
@@ -130,6 +136,7 @@ function segundoMaiorEMenor(array) {
 
 function ordenaArray(array) {
    // implemente sua lógica aqui
+   
 }
 
 // Exercício 12
