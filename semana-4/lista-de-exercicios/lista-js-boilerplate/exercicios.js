@@ -7,7 +7,6 @@ function inverteArray(array) {
    }
    return arrayInvertido
 }
-
 //Exercício 2
 
 function retornaNumerosParesElevadosADois(array) {
@@ -49,6 +48,7 @@ function retornaMaiorNumero(array) {
 function retornaQuantidadeElementos(array) {
    // implemente sua lógica aqui
    return array.length;
+
 }
 
 //Exercício 6
@@ -73,6 +73,8 @@ function retornaExpressoesBooleanas() {
    return arrayBooleana
 }
 
+   // implemente sua lógica aqui
+}
 
 //Exercício 7
 
@@ -129,14 +131,12 @@ function comparaDoisNumeros(num1, num2) {
 function segundoMaiorEMenor(array) {
    // implemente sua lógica aqui
    let novoarray = [];
-
 }
 
 //Exercício 11
 
 function ordenaArray(array) {
    // implemente sua lógica aqui
-   
 }
 
 // Exercício 12
@@ -164,6 +164,8 @@ function imprimeChamada(funcao) {
       atores: ['Meryl Streep', ' Anne Hathaway', ' Emily Blunt', ' Stanley Tucci']
    }
    return(`Venha assistir ao filme ${filmeFav.nome}, de ${filmeFav.ano}, dirigido por ${filmeFav.diretor} e estrelado por ${filmeFav.atores}.`)
+function imprimeChamada() {
+   // implemente sua lógica aqui
 }
 
 // Exercício 14
@@ -172,7 +174,6 @@ function criaRetangulo(lado1, lado2) {
    // implemente sua lógica aqui
    let retangulo = {largura: lado1, altura: lado2, perimetro: (lado1 * 2) + (lado2 * 2) , area: lado1 * lado2}
    return retangulo
-
 }
 
 // Exercício 15
@@ -229,8 +230,6 @@ function multiplicaArrayPor2S(array) {
 
 function verificaParidade(array) {
    // implemente sua lógica aqui
-
-   
 }
 
 // Exercício 18
