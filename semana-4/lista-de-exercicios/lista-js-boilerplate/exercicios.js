@@ -229,6 +229,8 @@ function multiplicaArrayPor2S(array) {
 
 function verificaParidade(array) {
    // implemente sua lógica aqui
+
+   
 }
 
 // Exercício 18
