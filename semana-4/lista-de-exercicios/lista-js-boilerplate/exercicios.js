@@ -1,37 +1,78 @@
 //Exercício 1
 
 function inverteArray(array) {
-   // implemente sua lógica aqui
-   let arrayInvertido = array.slice(0).reverse();
+   const arrayInvertido = []
+   for (let i = array.length - 1; i >= 0; i--) {
+      arrayInvertido.push(array[i])
+   }
    return arrayInvertido
 }
 //Exercício 2
 
 function retornaNumerosParesElevadosADois(array) {
    // implemente sua lógica aqui
+   let arrayPar = [];
+   for (let i = 0; i <= array.length; i++) {
+      if (array[i] % 2 === 0) {
+         arrayPar.push(array[i])
+      }
+   }
+   for (let i = 0; i < arrayPar.length; i++) {
+      arrayPar[i] = arrayPar[i] ** 2
+   }
+   return arrayPar
 }
 
 //Exercício 3
 
 function retornaNumerosPares(array) {
    // implemente sua lógica aqui
+   let arrayPares = [];
+   for (let i = 0; i < array.length; i++) {
+      if (array[i] % 2 === 0) {
+         arrayPares.push(array[i])
+      }
+   }
+   return arrayPares
 }
 
 //Exercício 4
 
 function retornaMaiorNumero(array) {
    // implemente sua lógica aqui
+   return Math.max.apply(null, array)
 }
 
 //Exercício 5
 
 function retornaQuantidadeElementos(array) {
    // implemente sua lógica aqui
+   return array.length;
+
 }
 
 //Exercício 6
 
 function retornaExpressoesBooleanas() {
+   // // implemente sua lógica aqui
+   // const booleano1 = true;
+   // const booleano2 = false;
+   // const booleano3 = !booleano2; //true
+   // const booleano4 = !booleano3 // false
+   // // a) false
+   // console.log(booleano1 && booleano2 && !booleano4) 
+   // // b) false 
+   // console.log(booleano1 && booleano2 || !booleano3)
+   // // c) true
+   // console.log(booleano2 || booleano3 || !booleano3)
+   // // d) true
+   // console.log(!(booleano2 && booleano3) || (!booleano4 & booleano3 && booleano3))
+   // // e) true
+   // console.log(!(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3))
+   const arrayBooleana = [false, false, true, true, true]
+   return arrayBooleana
+}
+
    // implemente sua lógica aqui
 }
 
@@ -39,24 +80,57 @@ function retornaExpressoesBooleanas() {
 
 function retornaNNumerosPares(n) {
    // implemente sua lógica aqui
+   const arrayPar = [];
+   for (let i = 0; arrayPar.length < n; i++) {
+      if (i % 2 === 0) {
+         arrayPar.push(i)
+      }
+   }
+   return arrayPar
 }
 
 // Exercício 8
 
 function checaTriangulo(a, b, c) {
    // implemente sua lógica aqui
+   if (a === b && b === c) {
+      return 'Equilátero'
+   } else if (a === b || b === c || c == a) {
+      return 'Isósceles'
+   } else {
+      return 'Escaleno'
+   }
 }
 
 // Exercício 9
 
 function comparaDoisNumeros(num1, num2) {
    // implemente sua lógica aqui
+   let maiorNumero;
+   let menorNumero;
+   let maiorDivisivelporMenor;
+
+   if (num1 > num2) {
+      maiorNumero = num1;
+      menorNumero = num2;
+   } else {
+      maiorNumero = num2;
+      menorNumero = num1;
+   }
+   if(maiorNumero % menorNumero === 0) {
+      maiorDivisivelporMenor = true;
+   }
+
+   const diferenca = maiorNumero - menorNumero;
+   
+   return {maiorNumero: maiorNumero, maiorDivisivelporMenor: maiorDivisivelporMenor, diferenca: diferenca}
 }
 
 // Exercício 10
 
 function segundoMaiorEMenor(array) {
    // implemente sua lógica aqui
+   let novoarray = [];
 }
 
 //Exercício 11
@@ -69,10 +143,27 @@ function ordenaArray(array) {
 
 function filmeFavorito() {
    // implemente sua lógica aqui
+   const filmeFav = {
+      nome: 'O Diabo Veste Prada',
+      ano: 2006,
+      diretor: 'David Frankel',
+      atores: ['Meryl Streep', 'Anne Hathaway', 'Emily Blunt', 'Stanley Tucci']
+   }
+
+   return filmeFav;
 }
 
 // Exercício 13
 
+function imprimeChamada(funcao) {
+   // implemente sua lógica aqui
+   const filmeFav = {
+      nome: 'O Diabo Veste Prada',
+      ano: 2006,
+      diretor: 'David Frankel',
+      atores: ['Meryl Streep', ' Anne Hathaway', ' Emily Blunt', ' Stanley Tucci']
+   }
+   return(`Venha assistir ao filme ${filmeFav.nome}, de ${filmeFav.ano}, dirigido por ${filmeFav.diretor} e estrelado por ${filmeFav.atores}.`)
 function imprimeChamada() {
    // implemente sua lógica aqui
 }
@@ -81,6 +172,8 @@ function imprimeChamada() {
 
 function criaRetangulo(lado1, lado2) {
    // implemente sua lógica aqui
+   let retangulo = {largura: lado1, altura: lado2, perimetro: (lado1 * 2) + (lado2 * 2) , area: lado1 * lado2}
+   return retangulo
 }
 
 // Exercício 15
