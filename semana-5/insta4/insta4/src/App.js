@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
 import Post from './components/Post/Post';
-
+import LogoCs from './img/cslogo.jpg'
+import Zero from './img/zero.png'
 const MainContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -20,13 +21,13 @@ class App extends React.Component {
           fotoPost={'https://picsum.photos/200/150'}
         />
 
-        <Post nomeUsuario={'Adrian Américo'}
-          fotoUsuario={'https://picsum.photos/50/50'}
-          fotoPost={'https://picsum.photos/200/150'} />
-
         <Post nomeUsuario={'Daniel Ueno'}
           fotoUsuario={'https://picsum.photos/50/50'}
-          fotoPost={'https://picsum.photos/200/150'} />
+          fotoPost={LogoCs} />
+
+        <Post nomeUsuario={'Adrian Américo'}
+          fotoUsuario={'https://picsum.photos/50/50'}
+          fotoPost={Zero} />
 
         <Post nomeUsuario={'Lais Petra'}
           fotoUsuario={'https://picsum.photos/50/50'}
