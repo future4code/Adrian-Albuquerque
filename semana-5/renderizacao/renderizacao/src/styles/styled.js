@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 export const MainContainer = styled.div`
-
+width: 100%;
+max-height: 100%;
 `
 export const PrimeiraEtapa = styled.div`
 display: flex;
-width: 350px;
+width: 360px;
 border-radius: 20px;
 margin: 0 auto;
 flex-direction: column;
