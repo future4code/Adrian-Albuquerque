@@ -62,7 +62,9 @@ class App extends React.Component {
     return (
       <MainContainer>
         <Cadastro handleUser={this.handleUser} handleEmail={this.handleEmail} submitNewUser={this.createNewUser} />
+        <UserDB mostrarUsuarios={this.getAllUsers}/>
         <Global />
+
       </MainContainer>
 
     );
