@@ -5,8 +5,12 @@ import AstroDev from './img/astrodev.png'
 import ExitIcon from './img/exit.svg'
 import axios from 'axios'
 import AstroFy from './img/astrofy.png'
+import Home from './Components/Home/Home'
+import MusicList from './Components/MusicList/MusicList'
+import Biblioteca from './Components/Biblioteca/Biblioteca'
 const BASE_URL = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
-const Header = {
+
+const HeaderDefault = {
   headers: {
     Authorization: "adrian-americo-paiva"
   }
@@ -17,17 +21,19 @@ class App extends React.Component {
   state = {
     display: 'Home',
     listOfPlaylists: [],
+    userPlaylists: [],
     idBeforePlaylist: [],
     musicOnPlaylist: [],
-    idPlaylist: ''
+    idPlaylist: '',
+    userHeader: ''
   }
   componentDidMount() {
     this.GetPlayLists();
   }
 
-  //Get de todas as Playlists
+  //Get de Playlists Recomendadas
   GetPlayLists = async () => {
-    const res = await axios.get(BASE_URL, Header)
+    const res = await axios.get(BASE_URL, HeaderDefault)
     try {
       this.setState({ listOfPlaylists: res.data.result.list, idBeforePlaylist: res.data.result.list })
       this.putId()
@@ -37,10 +43,37 @@ class App extends React.Component {
     }
   }
 
+  getUserPlaylists = async () => {
+    const res = await axios.get(BASE_URL, this.state.userHeader)
+    try {
+      this.setState({ userPlaylists: res.data })
+    }
+    catch {
+      alert("Ocorreu um erro ao carregar sua playlist")
+    }
+  }
+
+
+
+
+
+  //Onclicks do menu lateral
+  onCLickInicio = () => {
+    this.setState({ display: 'Home' })
+  }
+
+  onCLickBiblioteca = () => {
+    console.log("Biblioteca")
+    this.setState({ display: 'Biblioteca' })
+  }
+  onClickPlayLists = () => {
+    this.setState({ display: 'Baroes' })
+  }
+
   //Get de musicas na playlist
   GetMusic = async (id) => {
     const URL_GET = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`
-    const res = await axios.get(URL_GET, Header)
+    const res = await axios.get(URL_GET, HeaderDefault)
     try {
       this.setState({ musicOnPlaylist: res.data.result.tracks })
     }
@@ -58,16 +91,11 @@ class App extends React.Component {
 
   render() {
 
-    const paginaAtual = () => {
-      if (this.state.display !== "Home") {
-        console.log("Home")
-      }
-    }
-
     // Map de Playlists
     const PlayLists = this.state.listOfPlaylists.map((play) => {
-      return (
-        <li key={play.id}>{play.name}</li>
+      return (<>
+        <h2 key={play.id} onClick={this.onClickPlayLists}>{play.name}</h2>
+      </>
       )
     })
 
@@ -88,7 +116,6 @@ class App extends React.Component {
       )
     })
 
-    //Map de musicas
     return (
       <Main>
         <header>
@@ -104,21 +131,32 @@ class App extends React.Component {
         </header>
 
         <div className="left-side">
-          {/* LOGOTIPO */}
           <img src={AstroFy} alt="" className="astro-img" />
           <h3>AstroFy</h3>
-          {/* INSERIR ICONES AO LADO DE CADA BOTÃO */}
-          <h2>Inicio</h2>
-          <h2>Buscar</h2>
+          <h2 onClick={this.onCLickInicio}>Inicio</h2>
+          <h2 onClick={this.onCLickBiblioteca}>Sua Biblioteca</h2>
           <br />
-          <h2>Playlists</h2>
+          <h3>Playlists Recomendadas</h3>
           {PlayLists}
         </div>
         <main>
           <section className="songs-section">
-            {SongsOnPlaylist}
+            
+            {
+              this.state.display === 'Home' &&
+              <Home />
+            }
+            {
+              this.state.display === 'Baroes' &&
+              <MusicList SongsOnPlaylist={SongsOnPlaylist} />
+            }
+            {
+              this.state.display === 'Biblioteca' &&
+              <Biblioteca />
+            }
+
           </section>
-          {/* {paginaAtual} */}
+
         </main>
         <footer>
           <h1>Oi, eu sou um footer !</h1>
