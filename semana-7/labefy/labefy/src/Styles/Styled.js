@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PlanoDeFundo from '../img/bg.jpg'
 
 export const Main = styled.div`
 width: 100vw;
@@ -9,7 +10,6 @@ grid-template-columns: 200px 1fr;
 grid-template-rows: 80px 1fr 80px;
 
 header {
-/* background-color: yellow; */
 grid-row: 1;
 grid-column: 1 / span -1;
 display: flex;
@@ -20,7 +20,6 @@ width: 100%;
 
 .user-info {
 display: flex;
-/* color: white; */
 width: 115px;
 padding: 5px;
 margin-right: 1vw;
@@ -83,9 +82,16 @@ main {
     min-height: 100%;
     grid-column: 2;
     overflow: auto;
+
+    .biblioteca-h1 {
+        align-items: center;
+        text-align: center;
+        font-size: 2rem;
+        color: white;
+        font-family: "DM Sans", sans-serif;
+    }
     
     .song-section {
-        display: flex;
         max-width: 100%;
         min-height: 100%;
         li {
@@ -119,7 +125,37 @@ main {
             }
         }
     }
+    .playlist-area{
+       margin: 0 auto;
+       .playlist-area__input{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 0 auto;
+        width: 80%;
+
+        input {
+            background: none;
+            /* margin: none; */
+            opacity: 1;
+            color: white;
+            padding: 5px;
+            
+        }
+        button {
+            padding: 5px;
+            background: none;
+            color: white;
+            text-transform: uppercase;
+            border-radius: 10px;
+        }
+       }
+    }
 }
+
+
+
+
 footer {
     background-color: red;
     grid-column: 1 / span 3;
@@ -131,66 +167,31 @@ export const Home = styled.div`
 `
 
 export const Albums = styled.div`
-display: flex;
-width: 100%;
-text-align: center;
 font-family: "DM Sans", sans-serif;
-
-h1 {
-    font-size: 2rem;
-    color: white;
-}
-
-:root {
-  --blue: #2d46b9;
-  --white: #ffffff;
-  --black: #000000;
-  --green1: #1ed760;
-  --green2: #1db954;
-  --gray1: #c1c3c6;
-  --gray2: #919496;
-  --gray3: #616467;
-  --hero-bg-color: #ffc362;
-  --hero-terms-link: #efefef;
-}
-/**********
- * ALBUMS *
- **********/
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+text-align: center;
 
 .albums-cards-container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
-  flex-wrap: wrap;
+    flex-wrap: wrap;
+    overflow: auto;
+    padding: 5rem 0;
+  }
 
-/* Removes the horizontal scrollbar */
-::-webkit-scrollbar {
-  display: none;
-}
-
-/* Container for the album image and the album info */
-.album {
+  .album {
     min-width: 0;
-    width: 28%;
+    width: 33.33%;
     box-sizing: border-box;
     padding: 0.8rem;
     position: relative;
-    text-align: center;
-    margin: 0 auto;
-
- img {
+  
+  img {
+    width: 100%;
   box-shadow: 0.1rem 0.1rem 1.6rem -0.2rem rgba(0, 0, 0, 0.3);
-  width: 100%;
-  height: 100%;
-}
+  }
 
-img:hover {
-  cursor: pointer;
-}
-
-/* Container for the song title, artist name and play now button */
-.album-info {
+  .album-info{
     position: absolute;
     top: 0;
     right: 0;
@@ -202,53 +203,115 @@ img:hover {
     transition: all 0.4s ease;
     cursor: pointer;
 
-/* Song title and artist name */
-/* This code will avoid text from wrapping to the next line and it will add an ellipsis at the end */
-
-:hover{
-    opacity: 5;
-    background: rgba(0, 0, 0, 0.8);
-}
- h4 {
-    margin-top: 0.5rem;
+h2 {
+    margin-top: 1rem;
     font-weight: 400;
     letter-spacing: 0.005rem;
-}
+  }
+  
 
-/* Song title */
- h2 {
-  font-size: 2rem;
-  color: #919496;
-  padding-top: 2rem;
-}
-
-/* Artist name */
- h4 {
-  font-size: 1.8rem;
-  color: #1ed760;
-  margin: 0.8rem 0;
-}
-
- h2,
- h4 {
-  cursor: pointer;
-}
-
-/* Play now button */
- a {
-  font-size: 1.3rem;
-  color: #919496;
-  position: relative;
-  bottom: -5rem;
+  a {
+  font-size: 1.5rem;
+  color: #fff;
   font-weight: 700;
   letter-spacing: 2px;
   transition: all 0.4s ease;
-  :hover {
-  color: #1ed760;
-}
-}
-}
-}
-}
+  position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+  
+  }
 
+  :hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.8);
+
+  h2 {
+    color: #fff;
+    white-space: normal;
+    overflow: initial;
+    text-overflow: initial;
+  }
+  a {
+      :hover {
+        color: #1db954; 
+      }
+     
+  }
+  }
+  
+  }
+  }
+`
+
+export const PlaylistContainer = styled.div`
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+`
+export const MusicasDiv = styled.div`
+display: flex;
+justify-content: space-between;
+`
+
+export const Login = styled.div`
+background: url(${PlanoDeFundo}) no-repeat;
+background-size: cover;
+height: 100vh;
+opacity: .9;
+
+.login-area {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 280px;
+    transform: translate(-50%, -50%);
+    color: white;
+
+    h1{
+        float: left;
+        font-size: 40px;
+        border-bottom: 6px solid #4caf50;
+        margin-bottom: 50px;
+        padding: 13px 0;
+    }
+    .text-box {
+        width: 100%;
+        overflow: hidden;
+        font-size: 20px;
+        padding: 8px 0;
+        margin: 8px 0;
+        border-bottom: 1px solid #4caf50;
+
+        img {
+            width: 16px;
+            float: left;
+            text-align: center;
+        }
+        input {
+            border: none;
+            outline: none;
+            background: none;
+            color: white;
+            font-size: 18px;
+            width: 80%;
+            float: left;
+            margin: 0 10px;
+        }
+}
+        button {
+            width: 100%;
+            background: none;
+            border: 2px solid #4caf50;
+            color: white;
+            padding: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 12px 0;
+
+        }
+
+}
 `
