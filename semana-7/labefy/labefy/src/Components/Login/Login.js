@@ -8,10 +8,10 @@ export default class LoginPage extends React.Component {
                 <div className="login-area">
                     <h1>Login</h1>
                     <div className="text-box">
-                        <img src={UserIcon} alt=""/>
+                        <img src={UserIcon} alt="" />
                         <input onChange={this.props.handleUser} placeholder="Nome de Usuario" type="text" />
                     </div>
-                    <button onClick={this.props.mudarPagina}>Submit</button>
+                    <button onClick={this.props.getUserPlaylists}>Submit</button>
                 </div>
             </Login>
         )
