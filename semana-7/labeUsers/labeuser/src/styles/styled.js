@@ -4,38 +4,57 @@ import PlanoDeFundo from '../img/bg.jpg'
 export const MainContainer = styled.div`
 background: url(${PlanoDeFundo}) no-repeat;
 background-size: cover;
-height: 100vh;
+min-height: 100vh;
 opacity: .9;
 
 .lista-container {
 display: grid;
 grid-template-columns: repeat(3, 1fr);
 grid-template-rows: repeat(3, 1fr);
-width: 100%;
-height: 100%;
+height: 98vh;
 
     .lista-de-usuarios {
         grid-column: 2;
-        grid-row: 2;
+        grid-row: 1 / span 3;
         width: 100%;
         height: 100%;
-        ul {
-            margin: 10px;
-            color: white;
-            font-size: 18pt;
-            list-style: none;
-            text-align: center;
-            line-height: 1.3;
+        margin: 10px;
+        color: white;
+        font-size: 18pt;
+        list-style: none;
+        text-align: center;
+        line-height: 1.3;
+
             h1 {
                 font-size: 5rem;
                 margin: 5px 0;
             }
-        }
+            .map-de-item {
+                display: flex;
+                justify-content: space-between;
+                height: 40px;
+                align-items: center;
+              
+                button {
+                    padding: 0.8rem;
+                    border-radius: 12px;
+                    opacity: 0.9;
+                    cursor: pointer;
+                    background: none;
+                    color: white;
+                }
+            }
+            .lista-dos-user {
+                overflow: auto;
+                padding: 5px;
+            }
+    
+
 }
 }
 `
 export const HomeContainer = styled.div`
-@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+
 .login-area {
     position: absolute;
     left: 50%;

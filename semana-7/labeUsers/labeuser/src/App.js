@@ -3,10 +3,10 @@ import { MainContainer } from './styles/styled'
 import Global from './styles/globalstyle'
 import axios from 'axios'
 import Cadastro from './components/home/Cadastro'
-import UserDB from './components/UserDB/UserDB'
 
 
-const BASE_URL = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/"
+const BASE_URL = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/";
+
 const header = {
   headers: {
     Authorization: "adrian-americo-paiva"
@@ -40,13 +40,6 @@ export default class App extends React.Component {
 
   createNewUser = () => {
 
-    const header = {
-      headers: {
-        Authorization: "adrian-americo-paiva"
-      }
-    };
-
-    const BASE_URL = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users"
     const body = {
       name: this.state.userName,
       email: this.state.userEmail
@@ -74,22 +67,48 @@ export default class App extends React.Component {
 
 
   getAllUsers = () => {
-    const BASE_URL = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users"
+
     axios
       .get(BASE_URL, header)
       .then((res) => {
         this.setState({ listaUser: res.data })
-        console.log(res.data);
       })
       .catch((err) => {
         alert(err.response);
       });
   }
 
+  deleteUser = (id) => {
+
+    if (window.confirm("Voce quer mesmo apagar esse usuario ?") === false) {
+      console.log("Its Work !")
+     
+    } else {
+      const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`
+      axios
+        .delete(url, header)
+        .then((res) => {
+          alert(`o usuario foi apagado !`)
+            this.getAllUsers()
+        })
+        .catch((err) => {
+          alert(err.response.data)
+        })
+    }
+  }
+
+
+
+  
   render() {
 
     const lista = this.state.listaUser.map((user) => {
-      return <li key={user.id}>{user.name}</li>
+      return (
+        <div className="map-de-item" key={user.id}>
+          <li>{user.name}</li>
+          <button onClick={() => this.deleteUser(user.id)}>X</button>
+
+        </div>)
     })
 
     const troca = this.state.trocarDePagina
@@ -97,23 +116,21 @@ export default class App extends React.Component {
 
       <MainContainer>
 
-        {!troca &&
+        {troca &&
           <Cadastro handleUser={this.handleUser} handleEmail={this.handleEmail} createNewUser={this.createNewUser} handleClickEnter={this.handleClickEnter} />
 
         }
-        {troca &&
-         <div className="lista-container">
-          <div className="lista-de-usuarios">
-
-            <ul>
+        {!troca &&
+          <div className="lista-container">
+            <div className="lista-de-usuarios">
               <h1>Usuarios</h1>
-              {lista}
-            </ul>
+              <div className="lista-dos-user">
+                {lista}
+              </div>
+
+            </div>
 
           </div>
-
-        </div>
-
         }
         < Global />
       </MainContainer >
