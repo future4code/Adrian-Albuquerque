@@ -7,9 +7,10 @@ import './AppContainer.scss'
 
 function AppContainer() {
     const [matches, setMatches] = useState([])
+    const [display, setDisplay] = useState(true)
 
     useEffect(() => {
-        requisicao()
+        requisicao();
     }, [])
 
     const URL = "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/adrian/person"
