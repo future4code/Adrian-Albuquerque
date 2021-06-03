@@ -1,0 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html {
+  max-width: 100vw;
+  min-height: 100vh;
+}
+/*# sourceMappingURL=Main.css.map */
