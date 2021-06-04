@@ -1,5 +1,4 @@
 .main-container {
-    background-color: aliceblue;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -10,10 +9,11 @@
     .person-container {
         display: flex;
         flex-direction: column;
-        width: 50%;
+        width: 350px;
         margin: 0 auto;
-        background-color: aqua;
         font-weight: 900;
+        border-radius: 20px;
+        box-shadow: 1px 1px 1px #ccc;
 
         .botoes {
             display: flex;
@@ -27,15 +27,15 @@
 
         .info-container {
             width: 95%;
-            height: 500px;
+            height: 90%;
             align-self: center;
             margin: 10px auto;
         }
     }
-
-
 }
+
 .img-people {
     width: 100%;
-    height: 100%;
+    height: 450px;
+    border-radius: 20px;
 }

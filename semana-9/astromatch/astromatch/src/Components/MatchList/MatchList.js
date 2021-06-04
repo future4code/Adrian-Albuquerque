@@ -2,9 +2,10 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import Header from '../Header/Header'
 import './MatchList.scss'
 
-function MatchList() {
+function MatchList(props) {
 
     const [matchList, setMatchList] = useState([])
 
@@ -26,9 +27,8 @@ function MatchList() {
     }
 
     const matchesMap = matchList.map(item => {
-        console.log(item)
         return (
-            <div key={item.id} className="lista-de-matches">
+            <div key={item.id} className="item">
                 <p>{item.name}</p>
                 <img src={item.photo} alt="" />
             </div>
@@ -36,8 +36,15 @@ function MatchList() {
     })
     return (
         <div className="match-container">
-            <h1>Oi, eu sou o match list !</h1>
-            {matchesMap}
+
+            <div className="lista-de-matches">
+                <Header changeDisplay={props.changeDisplay} />
+                <div className="person-container pessoas">
+                    {matchesMap}
+                </div>
+            </div>
+
+
         </div>
     )
 }

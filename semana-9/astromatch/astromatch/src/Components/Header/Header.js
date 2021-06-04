@@ -1,10 +1,14 @@
 import React from 'react';
+import './Header.scss'
+import DraftsRoundedIcon from '@material-ui/icons/DraftsRounded';
 
 function Header(props) {
     return (
-        <div>
-            <h1>Header</h1>
-            <button onClick={props.changeDisplay}>teste</button>
+        <div className="header-container">
+            <div className="button-container">
+                <DraftsRoundedIcon onClick={props.changeDisplay} color="secondary" fontSize="medium" />
+            </div>
+
         </div>
     )
 }

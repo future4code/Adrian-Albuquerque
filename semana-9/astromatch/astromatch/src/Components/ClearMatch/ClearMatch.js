@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 import './ClearMatch.scss'
 
 
@@ -21,8 +22,8 @@ function ClearMatch(props) {
             ))
     }
     return (
-        <div>
-            <button onClick={clear}>clear</button>
+        <div className="clear">
+            <Button onClick={clear} color="primary" variant="contained">clear</Button>
         </div>
     )
 }
