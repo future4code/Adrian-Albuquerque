@@ -6,10 +6,8 @@ import ExitIcon from './img/exit.svg'
 import axios from 'axios'
 import SongLogo from './img/song-logo.png'
 import AstroFy from './img/astrofy.png'
-import Home from './Components/Home/Home'
 import MusicList from './Components/MusicList/MusicList'
 import CriarPlaylist from './Components/CriarPlaylist/CriarPlaylist'
-
 import LoginPage from './Components/Login/Login'
 const BASE_URL = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
 
@@ -22,14 +20,14 @@ const HeaderDefault = {
 class App extends React.Component {
 
   state = {
-    display: 'Biblioteca',
+    display: 'Login',
     recommendedPlaylists: [],
     recommendedIdPlaylist: [],
     recommendedMusicOnPlaylist: [],
     userPlaylists: [],
     userIdPlaylist: '',
     usercreatePlaylistName: '',
-    userHeader: 'daniel-ueno-paiva',
+    userHeader: '',
     userMusics: [],
     newPlaylistName: '',
     newPlaylistUrl: '',
@@ -38,7 +36,6 @@ class App extends React.Component {
   }
   componentDidMount() {
     this.GetPlayLists();
-    this.getUserPlaylists();
   }
 
   //Get de Playlists Recomendadas
@@ -72,11 +69,6 @@ class App extends React.Component {
       return this.GetMusic(idPlay.id)
     }))
   }
-
-
-
-
-
 
   //Requisições de API do Usuário
 
@@ -114,6 +106,7 @@ class App extends React.Component {
     const res = await axios.get(BASE_URL, userHeader)
     try {
       this.setState({ userPlaylists: res.data.result.list, userIdPlaylist: res.data.result.list })
+      this.onCLickBiblioteca()
     }
     catch {
       alert("Ocorreu um erro ao carregar sua playlist")
@@ -132,7 +125,6 @@ class App extends React.Component {
     try {
       this.setState({ userMusics: res.data.result.tracks })
       this.setState({ newPlaylistId: id })
-      console.log(this.state.newPlaylistId)
     }
     catch {
       console.log('error')
@@ -176,7 +168,10 @@ class App extends React.Component {
     this.setState({ display: 'CriarPlaylist' })
   }
   onClickUserMusics = () => {
-    this.setState({ display: "ListaMusica" })
+    this.setState({ display: 'ListaMusica' })
+  }
+  onClickLogin = () => {
+    this.setState({ display: 'Login', userHeader: '' })
   }
 
   //HANDLES DE INPUTS
@@ -207,16 +202,16 @@ class App extends React.Component {
 
     //Map de Playlist do Usuário
     const userPlaylistMap = this.state.userPlaylists.map((userPlay) => {
-      // this.setState({newPlaylistId: userPlay.id})
       return (
         <div className="album" key={userPlay.id} onClick={() => this.GetUserMusic(userPlay.id)
         }>
           <img src={SongLogo} alt="" />
           <div className="album-info">
             <h2>{userPlay.name}</h2>
-            <a href="#" target="">PLAY NOW</a>
+            <a href="#" target="" onClick={this.onClickUserMusics}>PLAY NOW</a>
           </div>
         </div >
+
       )
     })
 
@@ -225,10 +220,10 @@ class App extends React.Component {
       return (
         <div key={song.id} className="div-in-map">
           <section className="left-section">
-            <img src="https://studiosol-a.akamaihd.net/tb/160x160/palcomp3-logo/e/5/f/3/4db3ad13bb8a43a19ed3a1e269e93352.jpg" alt="" />
+            <img src={SongLogo} alt="" />
             <div className="text-align">
-              <li>Artista: {song.artist}</li>
-              <li>nome da musica:{song.name}</li>
+              <li>{song.artist}</li>
+              <li>{song.name}</li>
             </div>
           </section>
           <audio src={song.url} controls />
@@ -262,7 +257,7 @@ class App extends React.Component {
     })
     if (this.state.display === 'Login') {
       return <>
-        <LoginPage handleUser={this.handleUser} mudarPagina={this.onCLickBiblioteca} />
+        <LoginPage handleUser={this.handleUser} mudarPagina={this.onCLickBiblioteca} getUserPlaylists={this.getUserPlaylists} />
         <GlobalStyle />
       </>
     }
@@ -272,10 +267,10 @@ class App extends React.Component {
           <div className="user-info">
             <div className="user-info-left_side">
               <img src={AstroDev} alt="Astrodev" />
-              <h3>Astrodev</h3>
+              <h3>{this.state.userHeader}</h3>
             </div>
 
-            <img src={ExitIcon} alt="Sair" />
+            <img src={ExitIcon} alt="Sair" onCLick={this.onClickLogin} />
           </div>
 
         </header>
@@ -292,10 +287,6 @@ class App extends React.Component {
         </div>
         <main>
           {
-            this.state.display === 'Home' &&
-            <Home />
-          }
-          {
             this.state.display === 'Baroes' &&
             <MusicList SongsOnPlaylist={SongsOnPlaylist} />
           }
@@ -305,6 +296,7 @@ class App extends React.Component {
               <h1 className="biblioteca-h1">Suas Playlist</h1>
               <Albums>
                 {userPlaylistMap}
+                {this.onClickUserMusics}
               </Albums>
 
             </>
@@ -318,9 +310,7 @@ class App extends React.Component {
             <MusicList SongsOnPlaylist={userMusicsMap} handleName={this.handleName} handleUrl={this.handleUrl} handleArtist={this.handleArtist} postUserTrackOnPlaylist={this.postUserTrackOnPlaylist} />
           }
         </main>
-        <footer>
-          <h1>Oi, eu sou um footer !</h1>
-        </footer>
+
         <GlobalStyle />
       </Main >
     );

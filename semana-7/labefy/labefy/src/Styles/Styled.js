@@ -20,19 +20,21 @@ width: 100%;
 
 .user-info {
 display: flex;
-width: 115px;
-padding: 5px;
+/* width: 115px; */
+padding: 8px;
 margin-right: 1vw;
 align-items: center;
 background-color: #ccc;
 border-radius: 12px;
+color: black;
 font-size: 0.8rem;
 font-family: Verdana, Geneva, Tahoma, sans-serif;
 justify-content: space-between;
 
 h3 {
     margin: 0 5px;
-    color: white;
+    text-transform: uppercase;
+    color: black;
 }
 .user-info-left_side {
     display: flex;
@@ -81,6 +83,7 @@ main {
     max-width: 100%;
     min-height: 100%;
     grid-column: 2;
+    grid-row: 2 / span 3;
     overflow: auto;
 
     .biblioteca-h1 {
@@ -105,12 +108,42 @@ main {
         margin: 15px auto;
         padding: 5px;
         border-radius: 10px;
-        background-color: yellow;
         display: flex;
         width: 90%;
-        justify-content: space-between;
+        color: white;
+        font-family: "DM Sans" , sans-serif;
+        justify-content: space-around;
         align-items: center; 
         flex-direction: row;
+
+        :hover {
+            opacity: 0.6;
+            color: white;
+            cursor: pointer;
+        }
+        .text-align {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            justify-content: space-evenly;
+        }
+
+        audio{
+
+        ::-webkit-media-controls-panel {
+        background: transparent;
+      
+        
+}
+        ::-webkit-media-controls-timeline {
+            display: flex;
+        }
+        ::-webkit-media-controls {
+            background: none;
+            opacity: 0.5;
+        }      
+        }
 
         img {
             width: 5rem;
@@ -136,8 +169,8 @@ main {
 
         input {
             background: none;
-            /* margin: none; */
-            opacity: 1;
+            border: 1px 1px 1px 1px solid black;
+            opacity: .8;
             color: white;
             padding: 5px;
             
