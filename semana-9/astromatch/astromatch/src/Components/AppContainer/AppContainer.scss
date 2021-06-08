@@ -1,0 +1,41 @@
+.main-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .person-container {
+        display: flex;
+        flex-direction: column;
+        width: 350px;
+        margin: 0 auto;
+        font-weight: 900;
+        border-radius: 20px;
+        box-shadow: 1px 1px 1px #ccc;
+
+        .botoes {
+            display: flex;
+            justify-content: space-around;
+            color: white;
+
+            button {
+                padding: 10px;
+            }
+        }
+
+        .info-container {
+            width: 95%;
+            height: 90%;
+            align-self: center;
+            margin: 10px auto;
+        }
+    }
+}
+
+.img-people {
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+}

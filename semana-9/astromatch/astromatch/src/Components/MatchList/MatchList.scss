@@ -1,0 +1,49 @@
+.match-container {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    display: flex;
+}
+
+.item {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgb(238, 236, 236);
+    opacity: 2;
+    border-radius: 10px;
+    width: 95%;
+    margin: 10px 0;
+    cursor: pointer;
+
+    :hover {
+        background-color: #ccc;
+    }
+
+}
+
+.lista-de-matches {
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+
+    img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    p {
+        margin: 0 10px;
+    }
+}
+
+.pessoas {
+    width: 90%;
+    align-items: center;
+    padding: 10px;
+}
