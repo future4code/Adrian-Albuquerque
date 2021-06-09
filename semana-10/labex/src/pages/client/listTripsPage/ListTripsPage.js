@@ -3,7 +3,7 @@ import { useGetTrips } from '../../../requests/Request';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useHistory } from 'react-router-dom';
 import styles from '../../../styles/components/ListTripsPage.module.scss';
-import { goToFormPage, goToLastPage } from '../../coordinator'
+import { goToFormPage, goToLastPage } from '../../coordinator';
 
 function ListTripsPage() {
     const history = useHistory();

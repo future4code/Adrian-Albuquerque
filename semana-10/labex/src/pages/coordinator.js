@@ -1,3 +1,5 @@
+export const countryAPI = "https://restcountries.eu/rest/v2/all";
+
 // ROTAS CLIENT
 export const goToHomePage = (history) => {
     history.push("/");
@@ -13,6 +15,10 @@ export const goToFormPage = (history) => {
 }
 
 //ROTAS ADMIN
+
 export const goToAdminPage = (history) => {
-    history.push("/admin");
+    history.push("admin");
+}
+export const goToLoginPage = (history) => {
+    history.push("login");
 }

@@ -1,32 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../../hooks/useForm';
 import axios from 'axios';
-import { goToLastPage } from '../../coordinator';
+import { countryAPI, goToLastPage } from '../../coordinator';
 import { useHistory, useParams } from 'react-router-dom';
-const countryAPI = "https://restcountries.eu/rest/v2/all";
+import { usePostTrips } from '../../../requests/Request';
 
 function ApplicationFormPage() {
     const [nome, changeNome] = useForm("");
     const [idade, changeIdade] = useForm("");
     const [textoCandidatura, changeTextoCandidatura] = useForm("");
     const [profissao, changeProfissao] = useForm("");
-    const [allCountry, setAllCountry] = useState([])
-    const [selectCountry, setSelectCountry] = useState("Selecione o seu pais")
+    const [allCountry, setAllCountry] = useState([]);
+    const [selectCountry, setSelectCountry] = useState("Selecione o seu pais");
+    const [allDataInputed, setAllDataInputed] = useState([]);
 
+    // usePostTrip()
+    const postBody = usePostTrips([], '/trips', allDataInputed);
     useEffect(() => {
         getAllCountry();
-    }, [])
+        handleData();
+    }, [nome, idade, textoCandidatura, profissao, selectCountry])
 
-    const history = useHistory();
-    const params = useParams();
-
-    const data = {
+    const corpo = [{
         name: nome,
         age: idade,
         applicationText: textoCandidatura,
         profession: profissao,
         country: selectCountry
+    }]
+    const handleData = () => {
+        setAllDataInputed(corpo)
+        console.log(allDataInputed)
     }
+
+    const history = useHistory();
+    const params = useParams();
 
     const getAllCountry = () => {
         axios.get(countryAPI)
@@ -39,9 +47,10 @@ function ApplicationFormPage() {
     }
     const submitValidation = () => {
         if (nome && idade && textoCandidatura && profissao !== '' && allCountry !== "Selecione o seu pais") {
-            console.log("todos os campos foram preenchidos")
+            console.log(allDataInputed);
+            postBody([], '/trips', allDataInputed)
         } else {
-            console.log("preencha todos os campos")
+            alert("preencha todos os campos")
         }
     }
 
@@ -49,7 +58,6 @@ function ApplicationFormPage() {
         setSelectCountry(event.target.value)
         console.log(selectCountry)
     }
-
     return (
         <div>
             <div>

@@ -7,7 +7,6 @@ function useForm(initialValue) {
     const handleForm = (event) => {
         setFormData(event.target.value)
     }
-    console.log(formData)
     return [formData, handleForm]
 }
 export default useForm;

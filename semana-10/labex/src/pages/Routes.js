@@ -6,6 +6,7 @@ import ListTripsPage from './client/listTripsPage/ListTripsPage';
 import ApplicationFormPage from './client/applicationForm/ApplicationForm';
 import ErrorPage from '../pages/error/ErrorPage'
 import AdminHomePage from './admin/adminhome/AdminHomePage';
+import LoginPage from './admin/loginpage/LoginPage';
 
 import StarfieldAnimation from 'react-starfield-animation';
 import Footer from '../components/footer/Footer';
@@ -39,8 +40,13 @@ function Routes() {
                             <ApplicationFormPage />
                         </Route>
 
-                        <Route exact path="/login">
+                        {/* Rota Admin */}
+
+                        <Route exact path="/admin">
                             <AdminHomePage />
+                        </Route>
+                        <Route exact path="/login">
+                            <LoginPage />
                         </Route>
 
                         <Route>

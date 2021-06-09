@@ -4,7 +4,8 @@ const AUTH = 'adrian-americo-paiva';
 const BASE_URL = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/${AUTH}`;
 
 export const useGetTrips = (initialState, url) => {
-    const [trips, setTrips] = useState(initialState)
+    const [trips, setTrips] = useState(initialState);
+
     const getTripsData = () => {
         axios.get(`${BASE_URL}${url}`)
             .then((res => {
@@ -21,3 +22,20 @@ export const useGetTrips = (initialState, url) => {
     return trips;
 }
 
+export const usePostTrips = (initialState, url, body) => {
+    console.log(body)
+    const [data, setData] = useState(initialState);
+
+    const getPostsData = () => {
+        axios.post(`${BASE_URL}${url}`, body)
+            .then((res => {
+                setData(res.data)
+                console.log(data)
+            }))
+            .catch((err => {
+                alert(err)
+            }))
+        return data
+    }
+    return getPostsData;
+}

@@ -6,14 +6,13 @@ import Footer from '../../components/footer/Footer';
 
 function HomePage() {
     const history = useHistory();
-    const params = useParams();
     return (
         <div>
             <div>
                 <Header />
                 <h1>Oi, eu sou a HomePage</h1>
                 <button onClick={() => goToListTrips(history)}>Viagens</button>
-                <button onCLick={() => goToAdminPage(history)}>Área de Admin</button>
+                <button onClick={() => goToAdminPage(history)}>Admin</button>
                 <Footer />
             </div>
 
