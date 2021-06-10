@@ -3,8 +3,8 @@ import { useHistory, useParams } from 'react-router';
 import { goToListTrips, goToAdminPage } from '../coordinator';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
-
 function HomePage() {
+    document.title = "LabeX | Homepage";
     const history = useHistory();
     return (
         <div>

@@ -3,17 +3,15 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { BrowserContainer, BrowserAlign } from '../styles/components/browserstyles/BrowserContainer';
 import HomePage from './homepage/HomePage';
 import ListTripsPage from './client/listTripsPage/ListTripsPage';
-import ApplicationFormPage from './client/applicationForm/ApplicationForm';
+import ApplicationFormPage from './client/applicationForm/ApplicationFormPage';
 import ErrorPage from '../pages/error/ErrorPage'
 import AdminHomePage from './admin/adminhome/AdminHomePage';
 import LoginPage from './admin/loginpage/LoginPage';
-
+import TripDetailsPage from './admin/adminhome/tripdetailspage/TripDetailsPage';
 import StarfieldAnimation from 'react-starfield-animation';
-import Footer from '../components/footer/Footer';
-import Header from '../components/header/Header';
+import { BACKGROUND_URL } from '../pages/coordinator';
 
 function Routes() {
-    const BACKGROUND_URL = "https://transitive-bullshit.github.io/react-starfield-animation/static/media/stars.492b41ed.jpg";
     return (
         <BrowserContainer>
 
@@ -32,18 +30,18 @@ function Routes() {
                             <HomePage />
                         </Route>
 
-                        <Route exact path="/lista-de-viagens">
+                        <Route exact path="/trips/list">
                             <ListTripsPage />
                         </Route>
 
-                        <Route exact path="/lista-de-viagens/cadastro">
+                        <Route exact path="/trips/application">
                             <ApplicationFormPage />
                         </Route>
 
                         {/* Rota Admin */}
 
-                        <Route exact path="/admin">
-                            <AdminHomePage />
+                        <Route exact path="/admin/trips/list">
+                            <TripDetailsPage />
                         </Route>
                         <Route exact path="/login">
                             <LoginPage />

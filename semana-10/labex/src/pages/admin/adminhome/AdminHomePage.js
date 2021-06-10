@@ -3,6 +3,7 @@ import { goToLastPage, goToLoginPage } from '../../coordinator';
 import { useHistory, useParams } from 'react-router';
 
 function AdminHomePage() {
+    document.title = "LabeX | Admin";
     const history = useHistory();
     return (
         <div>

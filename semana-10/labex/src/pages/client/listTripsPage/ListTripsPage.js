@@ -6,6 +6,7 @@ import styles from '../../../styles/components/ListTripsPage.module.scss';
 import { goToFormPage, goToLastPage } from '../../coordinator';
 
 function ListTripsPage() {
+    document.title = "LabeX | Lista de Viagens";
     const history = useHistory();
     const listaDeItem = useGetTrips([], '/trips')
     console.log(listaDeItem.length)

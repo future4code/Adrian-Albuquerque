@@ -6,30 +6,26 @@ import { useHistory, useParams } from 'react-router-dom';
 import { usePostTrips } from '../../../requests/Request';
 
 function ApplicationFormPage() {
-    const [nome, changeNome] = useForm("");
-    const [idade, changeIdade] = useForm("");
-    const [textoCandidatura, changeTextoCandidatura] = useForm("");
-    const [profissao, changeProfissao] = useForm("");
-    const [allCountry, setAllCountry] = useState([]);
+    document.title = "LabeX | Cadastro de Viagem";
+    const [name, changeName] = useForm("");
+    const [age, changeAge] = useForm("");
+    const [applicationText, changeApplicationText] = useForm("");
+    const [profession, changeProfession] = useForm("");
+    const [country, changeCountry] = useState([]);
     const [selectCountry, setSelectCountry] = useState("Selecione o seu pais");
     const [allDataInputed, setAllDataInputed] = useState([]);
 
     // usePostTrip()
     const postBody = usePostTrips([], '/trips', allDataInputed);
+
     useEffect(() => {
         getAllCountry();
         handleData();
-    }, [nome, idade, textoCandidatura, profissao, selectCountry])
+    }, [name, age, applicationText, profession, selectCountry])
 
-    const corpo = [{
-        name: nome,
-        age: idade,
-        applicationText: textoCandidatura,
-        profession: profissao,
-        country: selectCountry
-    }]
+    const body = [{ name, age, applicationText, profession, country, }]
     const handleData = () => {
-        setAllDataInputed(corpo)
+        setAllDataInputed(body)
         console.log(allDataInputed)
     }
 
@@ -39,16 +35,16 @@ function ApplicationFormPage() {
     const getAllCountry = () => {
         axios.get(countryAPI)
             .then(res => {
-                setAllCountry(res.data)
+                changeCountry(res.data)
             })
             .catch((err) => {
                 alert(err)
             })
     }
     const submitValidation = () => {
-        if (nome && idade && textoCandidatura && profissao !== '' && allCountry !== "Selecione o seu pais") {
+        if (name && age && applicationText && profession !== '' && country !== "Selecione o seu pais") {
             console.log(allDataInputed);
-            postBody([], '/trips', allDataInputed)
+            postBody();
         } else {
             alert("preencha todos os campos")
         }
@@ -69,15 +65,15 @@ function ApplicationFormPage() {
                     </option>
                 </select>
 
-                <input placeholder="Nome" onChange={changeNome} value={nome}></input>
-                <input placeholder="Idade" onChange={changeIdade} value={idade}></input>
-                <input placeholder="Texto de candidatura" onChange={changeTextoCandidatura} value={textoCandidatura}></input>
-                <input placeholder="Profissao" onChange={changeProfissao} value={profissao}></input>
+                <input placeholder="Nome" onChange={changeName} value={name}></input>
+                <input placeholder="Idade" onChange={changeAge} value={age}></input>
+                <input placeholder="Texto de candidatura" onChange={changeApplicationText} value={applicationText}></input>
+                <input placeholder="Profissao" onChange={changeProfession} value={profession}></input>
 
                 <div>
                     <select onChange={onChangeCountry}>
                         <option>{selectCountry}</option>
-                        {allCountry ? allCountry.map(pais => {
+                        {country ? country.map(pais => {
                             return <option key={pais.name}>{pais.name}</option>
                         }) : <p>Carregando</p>}
                     </select>
@@ -88,7 +84,6 @@ function ApplicationFormPage() {
                 <button onClick={() => goToLastPage(history)}>Voltar</button>
                 <button onClick={submitValidation}>Enviar</button>
             </div>
-
         </div>
     )
 }
