@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { goToLastPage } from '../../coordinator';
 import { useHistory, useParams } from 'react-router-dom';
 import useForm from '../../../hooks/useForm';
@@ -13,12 +13,12 @@ function LoginPage() {
     const [bodyPage, setBodyPage] = useState([]);
 
     const Login = useLogin([], '/login', bodyPage);
-
-    const onClickLogin = () => {
+    useEffect(() => {
+        console.log("email", email)
+        console.log("senha", password)
         const body = { email, password }
         setBodyPage(body)
-        Login();
-    }
+    }, [email, password])
 
     return (
         <div>
@@ -26,7 +26,7 @@ function LoginPage() {
             <input placeholder="nome" value={email} type="email" onChange={handleEmail}></input>
             <input placeholder="senha" value={password} type="password" onChange={handlePassword}></input>
             <button onClick={() => goToLastPage(history)}>Voltar</button>
-            <button onClick={onClickLogin}>Logar</button>
+            <button onClick={Login}>Logar</button>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../pages/coordinator';
 import { useHistory } from 'react-router-dom';
+
 export const useGetTrips = (initialState, url) => {
     const [trips, setTrips] = useState(initialState);
 
@@ -30,7 +31,6 @@ export const usePostTrips = (initialState, url, body) => {
         axios.post(`${BASE_URL}${url}`, body)
             .then((res => {
                 setData(res.data)
-                console.log(data)
             }))
             .catch((err => {
                 alert(err.response.data.message)
@@ -59,21 +59,47 @@ export const useLogin = (initialState, url, body) => {
     return postUseLogin;
 }
 
-export const getTripsDetails = (id) => {
-    const header = {
-        headers: { auth: localStorage.getItem("token") }
-    }
+export const useGetTripsDetails = (initialState, id) => {
+    const token = localStorage.getItem("token");
+    const [data, setData] = useState(initialState)
 
     const getTrip = () => {
-        axios.get(`${BASE_URL}/trip/${id}`, header)
+        axios.get(`${BASE_URL}/trip/${id}`, { headers: { auth: token } })
             .then(res => {
-                console.log(res)
+                setData(res.data.trip)
+                console.log(data)
             })
             .catch(err => {
-                console.log(err.response.data)
+                console.log(err.message)
             })
+        return data
     }
-
-    console.log(header)
+    return getTrip
 }
 
+export const useListTripsDetails = (initialState, id) => {
+    const token = localStorage.getItem("token");
+    const [data, setData] = useState(initialState);
+    const [candidates, setCandidates] = useState(initialState)
+
+    const getTripList = () => {
+        axios.get(`${BASE_URL}/trip/${id}`, { headers: { auth: token } })
+            .then(res => {
+                setData(res.data.trip)
+                setCandidates(res.data.trip.candidates)
+                console.log(data)
+            })
+            .catch(err => {
+                alert(err)
+            })
+        return [data, candidates];
+    }
+    useEffect(() => {
+        getTripList()
+    }, [])
+    return data;
+}
+
+export const useDeleteSelectedTrip = () => {
+
+}

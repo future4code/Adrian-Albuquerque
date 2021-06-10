@@ -6,6 +6,7 @@ import ListTripsPage from './client/listTripsPage/ListTripsPage';
 import ApplicationFormPage from './client/applicationForm/ApplicationFormPage';
 import ErrorPage from '../pages/error/ErrorPage'
 import AdminHomePage from './admin/adminhome/AdminHomePage';
+import TripsListPage from './admin/triplistpage/TripListPage';
 import LoginPage from './admin/loginpage/LoginPage';
 import TripDetailsPage from './admin/adminhome/tripdetailspage/TripDetailsPage';
 import StarfieldAnimation from 'react-starfield-animation';
@@ -25,6 +26,7 @@ function Routes() {
             <BrowserAlign>
                 <BrowserRouter>
                     <Switch>
+
                         {/* Rota Client */}
                         <Route exact path="/">
                             <HomePage />
@@ -46,10 +48,14 @@ function Routes() {
                         <Route exact path="/login">
                             <LoginPage />
                         </Route>
+                        <Route exact path="/admin/trips/list/:id">
+                            <TripsListPage />
+                        </Route>
 
                         <Route>
                             <ErrorPage />
                         </Route>
+
                     </Switch>
                 </BrowserRouter>
             </BrowserAlign>
