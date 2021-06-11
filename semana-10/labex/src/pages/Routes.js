@@ -5,12 +5,13 @@ import HomePage from './homepage/HomePage';
 import ListTripsPage from './client/listTripsPage/ListTripsPage';
 import ApplicationFormPage from './client/applicationForm/ApplicationFormPage';
 import ErrorPage from '../pages/error/ErrorPage'
-import AdminHomePage from './admin/adminhome/AdminHomePage';
 import TripsListPage from './admin/triplistpage/TripListPage';
 import LoginPage from './admin/loginpage/LoginPage';
 import TripDetailsPage from './admin/adminhome/tripdetailspage/TripDetailsPage';
+import CreateTripPage from './admin/adminhome/createtrippage/CreateTripPage';
 import StarfieldAnimation from 'react-starfield-animation';
 import { BACKGROUND_URL } from '../pages/coordinator';
+
 
 function Routes() {
     return (
@@ -51,7 +52,9 @@ function Routes() {
                         <Route exact path="/admin/trips/list/:id">
                             <TripsListPage />
                         </Route>
-
+                        <Route exact path="/admin/trip/list/create">
+                            <CreateTripPage />
+                        </Route>
                         <Route>
                             <ErrorPage />
                         </Route>

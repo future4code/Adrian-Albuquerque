@@ -10,30 +10,31 @@ function TripListPage() {
     const tripList = useListTripsDetails([], params.id);
 
     const tripMap = [tripList]
-    console.log(tripList.candidates)
 
     return (
         <div>
             {
                 tripMap && tripMap.map(res => {
 
-                    return <div>
-                        <h2>Viagem para {res.planet}</h2>
-                        <p>Nome: {res.name}</p>
-                        <p>Descrição {res.description}</p>
-                        <p>Planeta {res.planet}</p>
-                        <p>Duração {res.durationInDays}</p>
-                        <p>{res.date}</p>
-                        <br />
+                    return (
+                        <div key={res.id}>
+                            <h2>Viagem para {res.planet}</h2>
+                            <p>Nome: {res.name}</p>
+                            <p>Descrição {res.description}</p>
+                            <p>Planeta {res.planet}</p>
+                            <p>Duração {res.durationInDays}</p>
+                            <p>{res.date}</p>
+                            <br />
 
-                        <h2>CANDIDATOS APROVADOS</h2>
-                        <p>{res.approved}</p>
-                    </div>
+                            <h2>CANDIDATOS APROVADOS</h2>
+                            <p>{res.approved}</p>
+                        </div>
+                    )
                 })
             }
 
             {tripList && tripList.candidates && tripList.candidates.map(resul => {
-                console.log(resul)
+
                 return (<div key={resul.id}>
                     <p>{resul.name}</p>
                     <p>{resul.profession}</p>

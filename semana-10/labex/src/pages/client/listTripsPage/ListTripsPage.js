@@ -9,7 +9,7 @@ function ListTripsPage() {
     document.title = "LabeX | Lista de Viagens";
     const history = useHistory();
     const listaDeItem = useGetTrips([], '/trips')
-    console.log(listaDeItem.length)
+    
     return (
         <div className={styles.TripsContainer}>
             <h1>Oi, eu sou a lista de viagens</h1>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useHistory } from 'react-router';
 import { goToListTrips, goToAdminPage } from '../coordinator';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';

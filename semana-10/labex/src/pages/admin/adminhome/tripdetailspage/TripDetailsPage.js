@@ -1,33 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { useGetTripsDetails, useGetTrips } from '../../../../requests/Request';
+import React from 'react';
+import { useGetTrips } from '../../../../requests/Request';
 import { useHistory } from 'react-router-dom';
 import useProtectedPage from '../../../../hooks/useProtectedPage';
-import { goToHomePage } from '../../../coordinator';
+import { goToHomePage, goToCreateTripPage } from '../../../coordinator';
 
 function TripDetailsPage() {
 
     document.title = "LabeX | Detalhe de Viagens";
+    useProtectedPage();
     const history = useHistory();
     const tripList = useGetTrips([], "/trips");
-    useProtectedPage();
-    const [tripId, setTripId] = useState("");
-    const getTrip = useGetTripsDetails([], tripId);
 
-    useEffect(() => {
-        getTrip();
-    }, [tripId])
+    const Logout = () => {
+        localStorage.clear("token");
+        history.push("/login")
+    }
+
     const onSubmitTrip = (id) => {
         if (id) {
-            setTripId(id);
             history.push(`/admin/trips/list/${id}`)
-            getTrip(id);
         }
     }
 
     return (
         <div>
             <h1>Oi, eu sou a TripDetailsPage</h1>
-            {tripList.length > 0 ? (
+            {tripList && tripList.length && tripList.length > 0 ? (
 
                 tripList.map((trip => {
                     return (
@@ -42,10 +40,10 @@ function TripDetailsPage() {
                 }))
             ) : <p>Carregando</p>
             }(
-            {/* {setTripId ? console.log(setTripId) : <p>nada</p>} */}
+
             <button onClick={() => goToHomePage(history)}>Voltar</button>
-            <button>Logout</button>
-            <button>Criar</button>
+            <button onClick={Logout}>sair</button>
+            <button onClick={() => goToCreateTripPage(history)}>Criar</button>
 
         </div>
 

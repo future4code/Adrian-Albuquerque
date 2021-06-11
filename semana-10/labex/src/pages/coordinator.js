@@ -2,8 +2,6 @@ export const countryAPI = "https://restcountries.eu/rest/v2/all";
 export const BACKGROUND_URL = "https://transitive-bullshit.github.io/react-starfield-animation/static/media/stars.492b41ed.jpg";
 export const BASE_URL = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/adrian-americo-paiva`;
 
-export const historico = () => {
-}
 // ROTAS CLIENT
 export const goToHomePage = (history) => {
     history.replace("/");
@@ -25,6 +23,9 @@ export const goToAdminPage = (history) => {
 }
 export const goToLoginPage = (history) => {
     history.push("/login");
+}
+export const goToCreateTripPage = (history) => {
+    history.push("/admin/trip/list/create")
 }
 
 

@@ -13,7 +13,7 @@ export const useGetTrips = (initialState, url) => {
                 setTrips(res.data.trips)
             }))
             .catch((err => {
-                setTrips(err)
+                setTrips(err.response)
             }))
     }
     useEffect(() => {
@@ -23,24 +23,17 @@ export const useGetTrips = (initialState, url) => {
     return trips;
 }
 
-export const usePostTrips = (initialState, url, body) => {
+export const usePostTrips = (id, body) => {
 
-    const [data, setData] = useState(initialState);
+    console.log(id, body)
+    const postTrips = () => {
 
-    const getPostsData = () => {
-        axios.post(`${BASE_URL}${url}`, body)
-            .then((res => {
-                setData(res.data)
-            }))
-            .catch((err => {
-                alert(err.response.data.message)
-            }))
-        return data
     }
-    return getPostsData;
+    return postTrips;
 }
 
 export const useLogin = (initialState, url, body) => {
+
     const [data, setData] = useState(initialState);
     const history = useHistory();
 
@@ -49,12 +42,12 @@ export const useLogin = (initialState, url, body) => {
             .then(res => {
                 setData(res.data);
                 localStorage.setItem("token", res.data.token);
-                console.log(data)
                 history.push("/admin/trips/list")
             })
             .catch(err => {
                 alert(err.response.data.message)
             })
+        return data
     }
     return postUseLogin;
 }
@@ -67,10 +60,10 @@ export const useGetTripsDetails = (initialState, id) => {
         axios.get(`${BASE_URL}/trip/${id}`, { headers: { auth: token } })
             .then(res => {
                 setData(res.data.trip)
-                console.log(data)
+
             })
             .catch(err => {
-                console.log(err.message)
+                alert(err.message)
             })
         return data
     }
@@ -87,7 +80,6 @@ export const useListTripsDetails = (initialState, id) => {
             .then(res => {
                 setData(res.data.trip)
                 setCandidates(res.data.trip.candidates)
-                console.log(data)
             })
             .catch(err => {
                 alert(err)
@@ -100,6 +92,6 @@ export const useListTripsDetails = (initialState, id) => {
     return data;
 }
 
-export const useDeleteSelectedTrip = () => {
+export const useDeleteSelectedTrip = (initialState, id) => {
 
 }

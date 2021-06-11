@@ -1,6 +1,6 @@
 import React from 'react';
 import { goToLastPage, goToLoginPage } from '../../coordinator';
-import { useHistory, useParams } from 'react-router';
+import { useHistory } from 'react-router';
 
 function AdminHomePage() {
     document.title = "LabeX | Admin";

@@ -1,33 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { goToLastPage } from '../../coordinator';
-import { useHistory, useParams } from 'react-router-dom';
-import useForm from '../../../hooks/useForm';
+import { useHistory } from 'react-router-dom';
+import useLoginHook from '../../../hooks/useLoginHook';
 import { useLogin } from '../../../requests/Request';
 
 function LoginPage() {
     document.title = "LabeX | Login";
     const history = useHistory();
+    const [bodyData, handleBodyData, cleanField] = useLoginHook({ email: "", password: "" });
 
-    const [email, handleEmail] = useForm("");
-    const [password, handlePassword] = useForm("");
-    const [bodyPage, setBodyPage] = useState([]);
+    const Login = useLogin([], '/login', bodyData);
 
-    const Login = useLogin([], '/login', bodyPage);
-    useEffect(() => {
-        console.log("email", email)
-        console.log("senha", password)
-        const body = { email, password }
-        setBodyPage(body)
-    }, [email, password])
-
+    const fazerLogin = (event) => {
+        event.preventDefault();
+        Login();
+        cleanField();
+    }
     return (
         <div>
             <h1>Login Page</h1>
-            <input placeholder="nome" value={email} type="email" onChange={handleEmail}></input>
-            <input placeholder="senha" value={password} type="password" onChange={handlePassword}></input>
+            <form onSubmit={fazerLogin}>
+
+                <input
+                    placeholder="E-Mail"
+                    value={bodyData.email}
+                    type="email"
+                    name="email"
+                    onChange={handleBodyData}
+                    required
+                />
+
+                <input
+                    placeholder="senha"
+                    name="password"
+                    value={bodyData.password}
+                    type="password"
+                    onChange={handleBodyData}
+                    pattern={"^.{3,}"}
+                    required
+                />
+
+
+                <button onClick={fazerLogin}>Logar</button>
+            </form>
             <button onClick={() => goToLastPage(history)}>Voltar</button>
-            <button onClick={Login}>Logar</button>
-        </div>
+        </div >
     )
 }
 export default LoginPage;

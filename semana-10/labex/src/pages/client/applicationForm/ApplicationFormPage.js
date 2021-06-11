@@ -1,36 +1,51 @@
 import React, { useEffect, useState } from 'react';
-import useForm from '../../../hooks/useForm';
+import useInputForm from '../../../hooks/useInputForm';
 import axios from 'axios';
 import { countryAPI, goToLastPage } from '../../coordinator';
-import { useHistory, useParams } from 'react-router-dom';
-import { usePostTrips } from '../../../requests/Request';
+import { useHistory } from 'react-router-dom';
+import { usePostTrips, useGetTrips } from '../../../requests/Request';
 
 function ApplicationFormPage() {
+
     document.title = "LabeX | Cadastro de Viagem";
-    const [name, changeName] = useForm("");
-    const [age, changeAge] = useForm("");
-    const [applicationText, changeApplicationText] = useForm("");
-    const [profession, changeProfession] = useForm("");
+    const [name, changeName] = useInputForm("");
+    const [age, changeAge] = useInputForm("");
+    const [applicationText, changeApplicationText] = useInputForm("");
+    const [profession, changeProfession] = useInputForm("");
+    const [choosedCountry, changeChoosedCountry] = useInputForm("");
     const [country, changeCountry] = useState([]);
     const [selectCountry, setSelectCountry] = useState("Selecione o seu pais");
-    const [allDataInputed, setAllDataInputed] = useState([]);
-
-    // usePostTrip()
-    const postBody = usePostTrips([], '/trips', allDataInputed);
+    const [id, setId] = useState("");
+    const history = useHistory();
+    const listaDeItem = useGetTrips([], '/trips');
 
     useEffect(() => {
+        console.log(listaDeItem)
+        console.log(choosedCountry)
+        console.log(id)
+        // setTrip();
         getAllCountry();
-        handleData();
-    }, [name, age, applicationText, profession, selectCountry])
+    }, [choosedCountry, id])
 
-    const body = [{ name, age, applicationText, profession, country, }]
-    const handleData = () => {
-        setAllDataInputed(body)
-        console.log(allDataInputed)
+
+    const submitTravel = () => {
+        if (name && age && applicationText && profession !== '' && country !== "Selecione o seu pais") {
+            const body = { name, age, applicationText, profession, country }
+
+            axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/adrian-americo-paiva/trips/${choosedCountry}/apply`, body)
+                .then(() => {
+                    alert("Formulário submetido com sucesso. Boa sorte!")
+                }).catch(error => {
+                    alert("Por favor preencha todos os campos e tente novamente.")
+                    console.log(error.message)
+                })
+        } else {
+            alert("preencha todos os campos")
+        }
+
+
     }
 
-    const history = useHistory();
-    const params = useParams();
 
     const getAllCountry = () => {
         axios.get(countryAPI)
@@ -41,35 +56,47 @@ function ApplicationFormPage() {
                 alert(err)
             })
     }
-    const submitValidation = () => {
-        if (name && age && applicationText && profession !== '' && country !== "Selecione o seu pais") {
-            console.log(allDataInputed);
-            postBody();
-        } else {
-            alert("preencha todos os campos")
-        }
-    }
 
     const onChangeCountry = (event) => {
         setSelectCountry(event.target.value)
-        console.log(selectCountry)
     }
+
     return (
         <div>
             <div>
                 <p>Pagina de formulário</p>
 
-                <select>
-                    <option>
-                        Escolha uma Viagem
-                    </option>
+                <select value={choosedCountry} onChange={changeChoosedCountry}>
+                    {listaDeItem && listaDeItem.length > 0 ? (
+                        listaDeItem.map((trip => {
+                            // console.log(trip.id)
+                            return (<option key={trip.id} value={trip.id}>{trip.planet}</option>)
+                        }))
+                    ) : <option>Carregando...</option>
+                    }
                 </select>
 
-                <input placeholder="Nome" onChange={changeName} value={name}></input>
-                <input placeholder="Idade" onChange={changeAge} value={age}></input>
-                <input placeholder="Texto de candidatura" onChange={changeApplicationText} value={applicationText}></input>
-                <input placeholder="Profissao" onChange={changeProfession} value={profession}></input>
-
+                <form onSubmit={submitTravel}>
+                    <input placeholder="Nome"
+                        onChange={changeName}
+                        value={name}
+                    />
+                    <input
+                        placeholder="Idade"
+                        onChange={changeAge}
+                        value={age}
+                    />
+                    <input
+                        placeholder="Texto de candidatura"
+                        onChange={changeApplicationText}
+                        value={applicationText}
+                    />
+                    <input
+                        placeholder="Profissao"
+                        onChange={changeProfession}
+                        value={profession}
+                    />
+                </form>
                 <div>
                     <select onChange={onChangeCountry}>
                         <option>{selectCountry}</option>
@@ -82,9 +109,9 @@ function ApplicationFormPage() {
             </div>
             <div>
                 <button onClick={() => goToLastPage(history)}>Voltar</button>
-                <button onClick={submitValidation}>Enviar</button>
+                <button onClick={submitTravel}>Enviar</button>
             </div>
-        </div>
+        </div >
     )
 }
 export default ApplicationFormPage;
