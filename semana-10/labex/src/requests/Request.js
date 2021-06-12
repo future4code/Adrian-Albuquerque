@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { BASE_URL } from '../pages/coordinator';
+import { BASE_URL, goToAdminPage } from '../pages/coordinator';
 import { useHistory } from 'react-router-dom';
 
 export const useGetTrips = (initialState, url) => {
@@ -27,11 +27,9 @@ export const sendPostTrips = (id, body) => {
         .then(() => {
             alert("Formulário enviado com sucesso. Boa sorte!")
 
-        }).catch(err => {
+        }).catch(() => {
             alert("Por favor preencha todos os campos e tente novamente.")
-            console.log(err.message)
         })
-
 }
 
 export const useLogin = (initialState, url, body) => {
@@ -72,8 +70,6 @@ export const useGetTripsDetails = (initialState, id) => {
     return getTrip
 }
 
-
-
 export const useListTripsDetails = (id, initialState) => {
     const [data, setData] = useState(initialState)
 
@@ -94,16 +90,25 @@ export const useListTripsDetails = (id, initialState) => {
     return [data, getData]
 }
 
-export const createTrip = (url, body, clear) => {
-    axios.post(`${BASE_URL}${url}`, body, {
+export const createTrip = (body) => {
+    axios.post(`${BASE_URL}/trips`, body, {
         headers: { auth: localStorage.getItem("token") }
     })
         .then(() => {
             alert("Viagem criada com sucesso !")
-            clear()
         })
         .catch((err) => {
             alert(err.response.data.message)
         })
 
+}
+
+export const deleteTrip = (id) => {
+    axios.delete(`${BASE_URL}/trips/${id}`, {
+        headers: { auth: localStorage.getItem("token") }
+    })
+        .then(() => {
+            alert("Viagem deletada com sucesso!")
+        })
+        .catch((err) => alert(err.response.data.message))
 }

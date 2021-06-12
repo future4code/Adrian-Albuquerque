@@ -18,8 +18,6 @@ function TripListPage() {
 
             <h1>Candidatos para viagem</h1>
 
-
-
              {tripDetails && tripDetails.trip && <h1>{tripDetails.trip.name}</h1>}
             {tripDetails && tripDetails.trip && <div>
                 <p><b>Nome:</b> {tripDetails.trip.name}</p>

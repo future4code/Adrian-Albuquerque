@@ -1,8 +1,8 @@
 import React from 'react';
-import { useGetTrips } from '../../../../requests/Request';
+import { useGetTrips, deleteTrip } from '../../../../requests/Request';
 import { useHistory } from 'react-router-dom';
 import useProtectedPage from '../../../../hooks/useProtectedPage';
-import { goToHomePage, goToCreateTripPage } from '../../../coordinator';
+import { goToHomePage, goToCreateTripPage, goToAdminPage } from '../../../coordinator';
 
 function TripDetailsPage() {
 
@@ -22,6 +22,11 @@ function TripDetailsPage() {
         }
     }
 
+    const deleteSelectedTrip = (id) => {
+        deleteTrip(id)
+        goToAdminPage(history)
+    }
+
     return (
         <div>
             <h1>Oi, eu sou a TripDetailsPage</h1>
@@ -33,14 +38,13 @@ function TripDetailsPage() {
                             <div>
                                 <p>{trip.name}</p>
                                 <button onClick={() => onSubmitTrip(trip.id)}>ver Detalhes</button>
-                                <button>APAGAR</button>
+                                <button onClick={() => deleteSelectedTrip(trip.id)}>APAGAR</button>
                             </div>
                         </div>
                     )
                 }))
             ) : <p>Carregando</p>
-            }(
-
+            }
             <button onClick={() => goToHomePage(history)}>Voltar</button>
             <button onClick={Logout}>sair</button>
             <button onClick={() => goToCreateTripPage(history)}>Criar</button>
