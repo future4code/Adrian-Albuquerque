@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-dom';
 export const useGetTrips = (initialState, url) => {
     const [trips, setTrips] = useState(initialState);
 
-
     const getTripsData = () => {
         axios.get(`${BASE_URL}${url}`)
             .then((res => {
@@ -23,13 +22,16 @@ export const useGetTrips = (initialState, url) => {
     return trips;
 }
 
-export const usePostTrips = (id, body) => {
+export const sendPostTrips = (id, body) => {
+    axios.post(`${BASE_URL}/trips/${id}/apply`, body)
+        .then(() => {
+            alert("Formulário enviado com sucesso. Boa sorte!")
 
-    console.log(id, body)
-    const postTrips = () => {
+        }).catch(err => {
+            alert("Por favor preencha todos os campos e tente novamente.")
+            console.log(err.message)
+        })
 
-    }
-    return postTrips;
 }
 
 export const useLogin = (initialState, url, body) => {
@@ -70,28 +72,38 @@ export const useGetTripsDetails = (initialState, id) => {
     return getTrip
 }
 
-export const useListTripsDetails = (initialState, id) => {
-    const token = localStorage.getItem("token");
-    const [data, setData] = useState(initialState);
-    const [candidates, setCandidates] = useState(initialState)
 
-    const getTripList = () => {
-        axios.get(`${BASE_URL}/trip/${id}`, { headers: { auth: token } })
-            .then(res => {
-                setData(res.data.trip)
-                setCandidates(res.data.trip.candidates)
-            })
-            .catch(err => {
-                alert(err)
-            })
-        return [data, candidates];
+
+export const useListTripsDetails = (id, initialState) => {
+    const [data, setData] = useState(initialState)
+
+    const getData = () => {
+        axios.get(`${BASE_URL}${id}`, {
+            headers: {
+                auth: localStorage.getItem("token")
+            }
+        })
+            .then((res) => setData(res.data))
+            .catch((err) => alert(err.response.data.message))
     }
+
     useEffect(() => {
-        getTripList()
-    }, [])
-    return data;
+        getData()
+    }, [id])
+
+    return [data, getData]
 }
 
-export const useDeleteSelectedTrip = (initialState, id) => {
+export const createTrip = (url, body, clear) => {
+    axios.post(`${BASE_URL}${url}`, body, {
+        headers: { auth: localStorage.getItem("token") }
+    })
+        .then(() => {
+            alert("Viagem criada com sucesso !")
+            clear()
+        })
+        .catch((err) => {
+            alert(err.response.data.message)
+        })
 
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { goToLastPage } from '../../coordinator';
+import { goToHomePage } from '../../coordinator';
 import { useHistory } from 'react-router-dom';
 import useLoginHook from '../../../hooks/useLoginHook';
 import { useLogin } from '../../../requests/Request';
@@ -7,14 +7,13 @@ import { useLogin } from '../../../requests/Request';
 function LoginPage() {
     document.title = "LabeX | Login";
     const history = useHistory();
-    const [bodyData, handleBodyData, cleanField] = useLoginHook({ email: "", password: "" });
+    const [bodyData, handleBodyData] = useLoginHook({ email: "", password: "" });
 
     const Login = useLogin([], '/login', bodyData);
 
     const fazerLogin = (event) => {
         event.preventDefault();
         Login();
-        cleanField();
     }
     return (
         <div>
@@ -24,8 +23,8 @@ function LoginPage() {
                 <input
                     placeholder="E-Mail"
                     value={bodyData.email}
-                    type="email"
-                    name="email"
+                    type={"email"}
+                    name={"email"}
                     onChange={handleBodyData}
                     required
                 />
@@ -34,16 +33,15 @@ function LoginPage() {
                     placeholder="senha"
                     name="password"
                     value={bodyData.password}
-                    type="password"
+                    type={"password"}
                     onChange={handleBodyData}
                     pattern={"^.{3,}"}
                     required
                 />
 
-
-                <button onClick={fazerLogin}>Logar</button>
+                <button type={"submit"} onClick={fazerLogin}>Logar</button>
             </form>
-            <button onClick={() => goToLastPage(history)}>Voltar</button>
+            <button onClick={() => goToHomePage(history)}>Voltar</button>
         </div >
     )
 }
