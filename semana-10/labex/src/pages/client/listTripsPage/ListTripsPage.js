@@ -8,8 +8,6 @@ import Mars from '../../../assets/mars.png';
 import Jupiter from '../../../assets/jupiter.png';
 import Netuno from '../../../assets/netuno.png';
 import Plutao from '../../../assets/plutao.png';
-
-
 import Button from '@material-ui/core/Button';
 
 function ListTripsPage() {
