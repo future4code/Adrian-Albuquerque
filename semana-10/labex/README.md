@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# LabeX
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Considerações Iniciais
 
-## Available Scripts
+- Foi um projeto bem bacana onde tivemos que aprender muita coisa em cima da hora pra implementar tudo no nosso código e um projeto bem grande para ser individual, mas acredito que a intenção era nos desafiar a construir isso sozinho.
+- Tive alguns problemas com a API e a resolução de sexta passada pelo Indio ajudou a melhorar o meu código, tinha coisas que eram apenas funções externas e eu fazia de custom hook e eram tantas requisições que davam problemas de CORS.
 
-In the project directory, you can run:
+Email: astrodev@gmail.com
+Senha: 123456
+Surge: adrian-labex.surge.sh
+Figma: https://www.figma.com/community/file/983811488259187690?fuid=978799209661702685
 
-### `npm start`
+### O que funciona
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- HomePage - Ok
+- ListTripsPage - Ok
+- ApplicationFormPage - Ok
+- Login Page - Ok
+- AdminHomePage - Ok
+- TripDetailsPage - Ok
+- CreateTripPage - Ok
+- Pagina de erro - Ok
+(Inclusive, a pagina de erro foi a pagina mais elaborada, oi chijokk)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Funcionalidades vindas da API como:
 
-### `npm test`
+#### Área de Usuário:
+- Ver viagens;
+- Se inscrever para viagens;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Área Admin:
+- Login;
+- Painel Administrativo;
+- Exibição de viagens com opção de exclusão;
+- Logout;
+- Criação de novas viagens;
+- Detalhes de candidatos pendentes para a viagem;
+- Detalhes de candidatos aprovados para a viagem;
 
-### `npm run build`
+* Foi utilizado uma API para exibir todos os países disponíveis e por conta disso tornou um pouco mais demorado a implementação;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Foi utilizado uma biblioteca para a animação do fundo da página;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Foi utilizado SASS ao invés de Styled components;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Como a API não disponibiliza imagens, criei um Switch case para de acordo com o planeta na área de viagens exibir como ele é;
 
-### `npm run eject`
+# O que não funciona
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Gerais:
+- Há muitos arquivos que não estão sendo utilizados;
+- Botões do Material-UI customizados estão se repetindo em no código
+* **Possível solução:***
+- Theme Provider, porém foquei em integração e funcionalidades e infelizmente não sobrou tempo para pesquisar como ele funciona, nunca usei essa ferramenta.
+- Switch case da fotos de planeta deve ser uma função externa recebendo props já que ela irá se repetir em algumas partes do site;
+- Falta um 'polimento' no site, há muito código que não é necessário;
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Homepage:
+- Falta estilização no foguete, o planejamento inicial seria uma animação de um foguete decolando onde iria usar keyframes já que não foi encontrado a animação pronta em bibliotecas externas;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Área do usuário:
+- Área de exibição de usuário há um hover em cada viagem, porém ao clicar não faz nada
+* Possível solução:
+- Ao clicar em uma viagem, redireciona o usuário a viagem selecionada sem a necessidade de usar o select para trocar de planeta
+- 
+## Área de Admin:
+- Não tive tempo para implementar a funcionalidade de aprovar candidatos;
+- Exibição de candidatos das viagens está com com vida própria, as vezes funciona, as vezes dá erros de network ou até funciona mas aponta um erro ao armazenar o que foi recebido na requisição no estado (???????)
+***Possíveis soluções:***
+- A requisição está sendo feita utilizando Custom hook, converter para apenas uma função de requisição deve resolver o problemas mas ainda não testei.
+- Falta estilização na página de viagens;
+- pagina de viagens está a informação do h1 errada;
+- Falta estilização na página de de postagem da viagem;
+- Ao excluir a viagem a página não atualiza e não exibe nenhum prompt ou algo do gênero pedindo a confirmação daquela exclusão, assim evitando acidentes;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Considerações Finais
+Projeto bastante complexo onde encontrei bugs que nem sabia que era possível e com certeza um desafio para fazer individualmente, mas consegui e o único limitador foi o tempo mesmo eu dedicando 100% do meu dia para desenvolve-lo (esqueci até de comer e passei horas madrugando para monta-lo, inclusive comecei a escrever a documentação as 4:30 da manhã do domingo). Porem haver bugs que não encontrei e tentei deixar o código o mais programado a objetos possível, separei coisas que se repetem mas nem tudo. E como no tech talk de sexta falaram sobre documentação... aqui estou eu !
 
-## Learn More
+_Hello World_ 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Imagens
+***Home Page***
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://user-images.githubusercontent.com/73081422/121799961-944e6300-cc05-11eb-9a5a-28d0c9ff255d.png)
 
-### Code Splitting
+***Lista de viagens***
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![image](https://user-images.githubusercontent.com/73081422/121800164-9664f180-cc06-11eb-9fa7-62557daffb29.png)
 
-### Analyzing the Bundle Size
+***Candidatar a viagem***
+![image](https://user-images.githubusercontent.com/73081422/121844072-bef9f380-ccb9-11eb-80cc-01caf681d463.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+***Login Page***
 
-### Making a Progressive Web App
+![image](https://user-images.githubusercontent.com/73081422/121844091-ccaf7900-ccb9-11eb-9300-db9472cd7321.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+***Lista de viagens***
 
-### Advanced Configuration
+![image](https://user-images.githubusercontent.com/73081422/121800229-02dff080-cc07-11eb-8e63-410fb924b4a2.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+***Detalhes da lista de viagens***
 
-### Deployment
+![image](https://user-images.githubusercontent.com/73081422/121800241-2145ec00-cc07-11eb-9a9b-7a4984c5825d.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+***Criar viagens***
 
-### `npm run build` fails to minify
+![image](https://user-images.githubusercontent.com/73081422/121800252-3589e900-cc07-11eb-91af-a9cf66aba8d9.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+***Página de erro***
+
+Ai você precisa conferir por conta própria xD 
