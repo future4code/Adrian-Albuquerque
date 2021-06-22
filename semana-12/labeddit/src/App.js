@@ -1,10 +1,11 @@
 import React from 'react';
 import Router from './routes/Router';
+import GlobalProvider from './global/GlobalProvider';
 function App() {
   return (
-    <div>
+    <GlobalProvider>
       <Router />
-    </div>
+    </GlobalProvider>
   );
 }
 

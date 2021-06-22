@@ -8,6 +8,7 @@ import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 function Router() {
     return (
+
         <BrowserRouter>
             <Switch>
                 <Route exact path="/">
@@ -35,6 +36,7 @@ function Router() {
                 </Route>
             </Switch>
         </BrowserRouter>
+        
     );
 };
 export default Router;
