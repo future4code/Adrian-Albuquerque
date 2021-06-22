@@ -1,11 +1,12 @@
 import React from 'react';
-import { Register } from '../../requests/AppAccess';
+import { useRegister } from '../../requests/AppAccess';
 import useInputData from '../../hooks/useInputData';
 import { TextField } from '@material-ui/core';
 
 function RegisterPage() {
     document.title = "LabeEddit | Registrar";
     const { data, onChange, Clear } = useInputData([]);
+    const Register = useRegister("/users/signup", data);
 
     const campoTexto = (type, name, value, title, label) => {
         return <TextField
@@ -18,11 +19,9 @@ function RegisterPage() {
     }
     const onClickToSend = (event) => {
         event.preventDefault();
-        console.log("click")
-        Register("/users/signup", data);
+        Register();
         Clear();
     }
-
 
     return (
         <div>
