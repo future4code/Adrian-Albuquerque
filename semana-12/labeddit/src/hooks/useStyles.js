@@ -4,7 +4,8 @@ import { red } from '@material-ui/core/colors';
 export const useStyles = makeStyles((theme) => ({
     root: {
         width: 500,
-        minWidth: 250
+        minWidth: 250,
+        boxShadow: "0 1px 1px 1px #c1b9b9"
     },
     media: {
         height: 0,

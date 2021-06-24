@@ -4,8 +4,10 @@ import { CreateCommentary } from '../CreateCommentary/CreateCommentary';
 import { Card, CardContent, Avatar, Typography, IconButton, CardActions, Collapse } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CardHeader from '@material-ui/core/CardHeader';
-import clsx from 'clsx';
 import { useStyles } from '../../hooks/useStyles';
+import ThumbUpAltRoundedIcon from '@material-ui/icons/ThumbUpAltRounded';
+import ThumbDownAltRoundedIcon from '@material-ui/icons/ThumbDownAltRounded';
+import clsx from 'clsx';
 import './card.scss';
 
 function ItemCard({ post }) {
@@ -36,43 +38,56 @@ function ItemCard({ post }) {
                         {title}
                     </Typography>
                     <br />
-                    <Typography variant="body1" component="p">
-                        <p className="overFlow">{post.body}</p>
+                    <Typography variant="body1" component="p" className="overFlow">
+                        {post.body}
                     </Typography>
+
                     <div>
-                        <p>{userVote}</p>
-                        <p>{commentCount}</p>
-                        <p>{voteSum}</p>
+
                     </div>
                 </CardContent>
 
                 <CardActions disableSpacing>
-                    {commentCount ? <p>Comentários({commentCount})</p> : <p>Comentário(0)</p>}
-                    <IconButton
-                        className={clsx(classes.expand, {
-                            [classes.expandOpen]: expanded,
-                        })}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                    >
-                        <ExpandMoreIcon />
-                    </IconButton>
+                    <div className="interactionContainer">
+                        <div className="reactionIcons">
+                            <p>{voteSum || 0}</p>
+                            <ThumbUpAltRoundedIcon style={{ margin: "0 5px" }} />
+                            <p>{userVote || 0}</p>
+                            <ThumbDownAltRoundedIcon style={{ margin: "0 5px" }}/>
+                        </div>
+
+                        <div className="commentIcon">
+                            <p>Comentário({commentCount ? commentCount : 0})</p>
+                            <IconButton
+                                className={clsx(classes.expand, {
+                                    [classes.expandOpen]: expanded,
+                                })}
+                                onClick={handleExpandClick}
+                                aria-expanded={expanded}
+                                aria-label="show more"
+                                style={{ marginLeft: "0", cursor: "pointer" }}
+                            >
+                                <ExpandMoreIcon />
+                            </IconButton>
+                        </div>
+                    </div>
                 </CardActions>
 
                 <Collapse in={expanded} timeout="auto" unmountOnExit >
-                    {allComments && allComments.map((comment) => {
-                        const { username, body, id } = comment
-                        return (
-                            <div key={id} className="commentaryOnCollapse">
-                                <div className="commentaryOnCollapse_Top">
-                                    <Avatar aria-label="avatar" className={classes.avatar}>{username[0]}</Avatar>
-                                    <p>{username}</p>
+                    <div className="commentarysContainer" style={{ display: "flex", flexDirection: "column-Reverse" }}>
+                        {allComments && allComments.map((comment) => {
+                            const { username, body, id } = comment
+                            return (
+                                <div key={id} className="commentaryOnCollapse">
+                                    <div className="commentaryOnCollapse_Top">
+                                        <Avatar aria-label="avatar" className={classes.avatar}>{username[0]}</Avatar>
+                                        <p>{username}</p>
+                                    </div>
+                                    <p>{body}</p>
                                 </div>
-                                <p>{body}</p>
-                            </div>
-                        )
-                    })}
+                            )
+                        })}
+                    </div>
                 </Collapse>
                 <CreateCommentary id={id} getComments={getComments} />
             </Card>

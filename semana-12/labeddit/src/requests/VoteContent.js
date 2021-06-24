@@ -1,7 +1,5 @@
 import axios from 'axios';
 import { BASE_URL, headers } from '../constants/constants';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 export function createPostVote(id, body, refresh) {
     axios.post(`${BASE_URL}/posts/${id}/votes`, body, headers)
