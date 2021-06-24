@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField } from '@material-ui/core';
 
-export function Login({ type, name, value, title, label, mudaValor }) {
+export function Register({ type, name, value, title, label, mudaValor }) {
     return (
         <TextField
             id="outlined-basic"

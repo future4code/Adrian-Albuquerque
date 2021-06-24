@@ -1,34 +1,28 @@
 import React from 'react';
 import { useRegister } from '../../requests/AppAccess';
 import useInputData from '../../hooks/useInputData';
-import { TextField } from '@material-ui/core';
+import { Register } from '../../components/Register/Register';
 
 function RegisterPage() {
     document.title = "LabeEddit | Registrar";
-    const { data, onChange, Clear } = useInputData([]);
-    const Register = useRegister("/users/signup", data);
+    const { data, onChange, clear } = useInputData({ username: "", email: "", password: "" });
+    const register = useRegister("/users/signup", data);
 
-    const campoTexto = (type, name, value, title, label) => {
-        return <TextField
-            id="outlined-basic"
-            variant="outlined"
-            size="small"
-            onChange={onChange}
-            required
-            type={type} name={name} value={value} title={title} label={label} />
-    }
+
     const onClickToSend = (event) => {
         event.preventDefault();
-        Register();
-        Clear();
+        register();
+        clear();
     }
-
     return (
         <div>
             <form onSubmit={onClickToSend}>
-                {campoTexto("text", "username", data.username, "Digite uma nome válido", "Nome de Usuário")}
-                {campoTexto("email", "email", data.email, "Digite uma email válido", "E-mail")}
-                {campoTexto("password", "password", data.password, "Digite uma senha válida", "Senha")}
+                <Register type="text" name="username" value={data.username} title="Nome de usuário inválido" label="Nome de usuário" mudaValor={onChange}
+                />
+                <Register type="email" name="email" value={data.email} title="Digite um email válido" label="E-mail" mudaValor={onChange}
+                />
+                <Register type="password" name="password" value={data.password} title="Digite uma senha" label="Senha" mudaValor={onChange}
+                />
                 <button>Cadastrar</button>
             </form>
         </div>

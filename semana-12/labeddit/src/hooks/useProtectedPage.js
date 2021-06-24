@@ -1,7 +1,7 @@
 import { useHistory } from "react-router";
 import { useEffect } from "react";
 
-function useProtectedPage() {
+function  useProtectedPage() {
     const history = useHistory();
     useEffect(() => {
         const token = localStorage.getItem("token")

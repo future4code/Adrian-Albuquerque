@@ -1,21 +1,15 @@
 import axios from 'axios';
-import { BASE_URL } from '../constants/constants';
+import { BASE_URL, headers } from '../constants/constants';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-export const useGetAllPosts = (url, initialState) => {
-    const [data, setData] = useState(initialState);
-    const token = localStorage.getItem("token")
+export const useGetAllPosts = (initialState) => {
+    const [allPosts, setAllPosts] = useState(initialState);
 
-    const headers = {
-        headers: {
-            Authorization: token
-        }
-    };
     const getPost = () => {
-        axios.get(`${BASE_URL}${url}`, headers)
+        axios.get(`${BASE_URL}/posts`, headers)
             .then((res) => {
-                setData(res.data)
+                setAllPosts(res.data)
             })
             .catch((err) => {
                 alert(err.response.data)
@@ -25,30 +19,25 @@ export const useGetAllPosts = (url, initialState) => {
         getPost();
     }, [])
 
-    return data;
+    return [allPosts, getPost]
 }
 
 export const useGetPostComments = (id, initialState) => {
-    const [data, setData] = useState(initialState);
-    const token = localStorage.getItem("token")
+    const [allComments, setAllComments] = useState(initialState);
 
-    const headers = {
-        headers: {
-            Authorization: token
-        }
-    };
     const getPost = () => {
         axios.get(`${BASE_URL}/posts/${id}/comments`, headers)
             .then((res) => {
-                setData(res.data)
+                setAllComments(res.data)
             })
             .catch((err) => {
-                alert(err.response.data)
+                alert("Ocorreu um erro de Autorização, redirecionando para página de Login")
+                localStorage.clear()
             })
     }
     useEffect(() => {
         getPost();
     }, [])
 
-    return data;
+    return [allComments, getPost];
 }
