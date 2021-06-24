@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import GlobalContext from '../context/GlobalContext';
+import { buttonColors } from './ThemeProvider';
+import { ThemeProvider } from '@material-ui/core';
 
 function ContextProvider({ children }) {
     const [post, setPost] = useState("Hello World");
@@ -7,8 +9,10 @@ function ContextProvider({ children }) {
 
     return (
         <GlobalContext.Provider value={Data}>
-            {children}
-        </GlobalContext.Provider >
+            <ThemeProvider theme={buttonColors}>
+                {children}
+            </ThemeProvider>
+        </GlobalContext.Provider>
     )
 }
 export default ContextProvider;

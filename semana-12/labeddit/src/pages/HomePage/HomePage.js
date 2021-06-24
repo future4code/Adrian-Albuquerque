@@ -4,6 +4,7 @@ import { useGetAllPosts } from '../../requests/ShowContent';
 import { createPost } from '../../requests/CreateContent';
 import useInputData from '../../hooks/useInputData';
 import Card from '../../components/Card/Card';
+import './homepage.scss'
 
 function HomePage() {
     useProtectedPage();
@@ -16,7 +17,7 @@ function HomePage() {
         clear();
     }
     return (
-        <div>
+        <div id="homePageContainer">
             <form onSubmit={sendPost}>
                 <input placeholder="Titulo" value={data.title} onChange={onChange} name="title" />
                 <textarea placeholder="Mensagem" value={data.body} onChange={onChange} name="body" />
