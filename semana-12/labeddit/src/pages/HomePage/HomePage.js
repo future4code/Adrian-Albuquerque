@@ -4,11 +4,12 @@ import { useGetAllPosts } from '../../requests/ShowContent';
 import { createPost } from '../../requests/CreateContent';
 import useInputData from '../../hooks/useInputData';
 import Card from '../../components/Card/Card';
+
 function HomePage() {
     useProtectedPage();
     const [allPosts, getPosts] = useGetAllPosts([]);
     const { data, onChange, clear } = useInputData({ title: "", body: "" });
-    console.log(allPosts)
+    
     const sendPost = (event) => {
         event.preventDefault();
         createPost(data, getPosts);
@@ -25,8 +26,8 @@ function HomePage() {
             {allPosts ? allPosts.map((post) => {
                 const { id } = post
                 return (
-                    <div>
-                        <Card key={id} post={post} />
+                    <div key={id}>
+                        <Card post={post} />
                     </div>
                 )
             }) : <p>Carregando</p>

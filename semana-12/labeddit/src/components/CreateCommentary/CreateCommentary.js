@@ -2,15 +2,14 @@ import React from 'react';
 import { createComment } from '../../requests/CreateContent';
 import useInputData from '../../hooks/useInputData';
 
-export function CreateCommentary({ id, getPosts }) {
+export function CreateCommentary({ id, getComments }) {
     const { data, onChange, clear } = useInputData({ body: "" });
     const sendPost = (event) => {
         event.preventDefault();
-        createComment(id, data);
-        getPosts();
+        createComment(id, data, getComments);
+        getComments();
         clear();
     }
-    console.log(data)
     return (
 
         <form onSubmit={sendPost}>

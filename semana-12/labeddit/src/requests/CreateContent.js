@@ -12,13 +12,13 @@ export function createPost(body, getPosts) {
         })
 }
 
-export function createComment(id, body) {
-    console.log(body)
+export function createComment(id, body, getComments) {
     axios.post(`${BASE_URL}/posts/${id}/comments`,body, headers)
     .then(() => {
-        console.log("Comentário postado com sucesso")
+        
+        getComments()
     })
     .catch((err) => {
-        console.log(err.response.data)
+        alert(err.response.data)
     })
 }

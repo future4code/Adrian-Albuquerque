@@ -25,7 +25,7 @@ export const useGetAllPosts = (initialState) => {
 export const useGetPostComments = (id, initialState) => {
     const [allComments, setAllComments] = useState(initialState);
 
-    const getPost = () => {
+    const getComments = () => {
         axios.get(`${BASE_URL}/posts/${id}/comments`, headers)
             .then((res) => {
                 setAllComments(res.data)
@@ -36,8 +36,8 @@ export const useGetPostComments = (id, initialState) => {
             })
     }
     useEffect(() => {
-        getPost();
+        getComments();
     }, [])
 
-    return [allComments, getPost];
+    return [allComments, getComments];
 }
