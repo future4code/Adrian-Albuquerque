@@ -12,7 +12,7 @@ export const useGetAllPosts = (initialState) => {
                 setAllPosts(res.data)
             })
             .catch((err) => {
-                console.log(err.response)
+                alert("ocorreu um erro na requisição")
             })
     }
     useEffect(() => {

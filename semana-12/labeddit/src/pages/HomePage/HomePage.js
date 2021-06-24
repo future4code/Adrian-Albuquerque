@@ -1,14 +1,16 @@
-import React from 'react';
-import useProtectedPage from '../../hooks/useProtectedPage';
+import React, { useEffect } from 'react';
+// import useProtectedPage from '../../hooks/useProtectedPage';
 import { useGetAllPosts } from '../../requests/ShowContent';
 import { createPost } from '../../requests/CreateContent';
 import useInputData from '../../hooks/useInputData';
 import ItemCard from '../../components/Card/Card';
 import { Header } from '../../components/Header/Header';
-import './homepage.scss'
+import { goToLoginPage } from '../../constants/Cordinator';
+import './homepage.scss';
+import { useHistory } from 'react-router-dom';
 
 function HomePage() {
-    useProtectedPage();
+    const history = useHistory();
     const [allPosts, getPosts] = useGetAllPosts([]);
     const { data, onChange, clear } = useInputData({ title: "", body: "" });
 
@@ -17,6 +19,12 @@ function HomePage() {
         createPost(data, getPosts);
         clear();
     }
+    useEffect(() => {
+        if(!localStorage.getItem("token")) {
+            goToLoginPage(history)
+        }
+
+    }, [])
     return (
         <div id="homePageContainer">
             <Header sendPost={sendPost} onChange={onChange} data={data} />

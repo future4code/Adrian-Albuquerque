@@ -2,21 +2,17 @@ import axios from 'axios';
 import { BASE_URL } from '../constants/constants';
 import { useHistory } from 'react-router-dom';
 
-export const useLogin = (url, body) => {
-    const history = useHistory();
+export const login = async (body, history) => {
+    const loginUser = await axios.post(`${BASE_URL}/users/login`, body)
+        .then((res => {
+            localStorage.setItem("token", res.data.token);
+            history.push("/")
+        }))
+        .catch((err) => {
+            alert(err.response.data)
+        })
 
-    const LoginUser = () => {
-        axios.post(`${BASE_URL}${url}`, body)
-            .then((res => {
-                localStorage.setItem("token", res.data.token);
-                history.push("/");
-                alert("Login efetuado, redirecionando a pagina principal !");
-            }))
-            .catch((err) => {
-                alert(err.response.data)
-            })
-    }
-    return LoginUser;
+    return loginUser;
 }
 
 export const useRegister = (url, body) => {

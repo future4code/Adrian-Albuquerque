@@ -10,7 +10,6 @@ export function CreateCommentary({ id, getComments, setCommentCounter }) {
 
     const sendPost = (event) => {
         if (data !== "") {
-            console.log(event)
             event.preventDefault();
             createComment(id, data, getComments, setCommentCounter);
             getComments();
