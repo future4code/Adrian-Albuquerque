@@ -7,7 +7,7 @@
   display: flex;
   background: url(../assets/Reddit-Image.jpg);
   background-size: cover;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-position: center center;
 
   .formContainer {
@@ -18,15 +18,25 @@
     background: whitesmoke;
     border-radius: 20px;
     padding: 20px;
+    @media (max-width: 400px) {
+      padding: 0;
+    }
+    @media(min-width: 1000px) {
+        width: 50%;
+    }
 
     form {
       width: 30%;
-      min-width: 300px;
+      min-width: 280px;
       align-items: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       height: 100%;
+      @media(min-width: 1000px) {
+        width: auto;
+      }
+    
 
       .formInputs {
         flex: 2;

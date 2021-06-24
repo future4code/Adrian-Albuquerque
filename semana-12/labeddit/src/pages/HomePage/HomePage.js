@@ -3,7 +3,7 @@ import useProtectedPage from '../../hooks/useProtectedPage';
 import { useGetAllPosts } from '../../requests/ShowContent';
 import { createPost } from '../../requests/CreateContent';
 import useInputData from '../../hooks/useInputData';
-import Card from '../../components/Card/Card';
+import ItemCard from '../../components/Card/Card';
 import './homepage.scss'
 
 function HomePage() {
@@ -28,7 +28,7 @@ function HomePage() {
                 const { id } = post
                 return (
                     <div key={id}>
-                        <Card post={post} />
+                        <ItemCard post={post} />
                     </div>
                 )
             }) : <p>Carregando</p>

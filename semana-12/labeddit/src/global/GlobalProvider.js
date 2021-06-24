@@ -4,11 +4,10 @@ import { buttonColors } from './ThemeProvider';
 import { ThemeProvider } from '@material-ui/core';
 
 function ContextProvider({ children }) {
-    const [post, setPost] = useState("Hello World");
-    const Data = { post, setPost }
+    const [commentCounter, setCommentCounter] = useState(0)
 
     return (
-        <GlobalContext.Provider value={Data}>
+        <GlobalContext.Provider value={[commentCounter, setCommentCounter]}>
             <ThemeProvider theme={buttonColors}>
                 {children}
             </ThemeProvider>
