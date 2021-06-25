@@ -1,23 +1,30 @@
 import axios from 'axios';
-import { BASE_URL, headers } from '../constants/constants';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { BASE_URL } from '../constants/constants';
+import { useLayoutEffect, useState } from 'react';
 
 export const useGetAllPosts = (initialState) => {
     const [allPosts, setAllPosts] = useState(initialState);
 
+    useLayoutEffect(() => {
+        const token = window.localStorage.getItem('token')
+        if (token) {
+            getPost()
+        }
+    }, [])
+
     const getPost = () => {
-        axios.get(`${BASE_URL}/posts`, headers)
+        axios.get(`${BASE_URL}/posts`, {
+            headers: {
+                authorization: localStorage.getItem('token')
+            }
+        })
             .then((res) => {
                 setAllPosts(res.data)
             })
             .catch((err) => {
-                alert("ocorreu um erro na requisição")
+                alert(err.response.data)
             })
     }
-    useEffect(() => {
-        getPost();
-    }, [])
 
     return [allPosts, getPost]
 }
@@ -25,19 +32,27 @@ export const useGetAllPosts = (initialState) => {
 export const useGetPostComments = (id, initialState) => {
     const [allComments, setAllComments] = useState(initialState);
 
+    useLayoutEffect(() => {
+        const token = window.localStorage.getItem('token')
+        if (token) {
+            getComments()
+        }
+    }, [])
+
     const getComments = () => {
-        axios.get(`${BASE_URL}/posts/${id}/comments`, headers)
+        axios.get(`${BASE_URL}/posts/${id}/comments`, {
+            headers: {
+                authorization: localStorage.getItem('token')
+            }
+        })
             .then((res) => {
                 setAllComments(res.data)
+
             })
             .catch((err) => {
                 alert("Ocorreu um erro de Autorização, redirecionando para página de Login")
                 localStorage.clear()
             })
     }
-    useEffect(() => {
-        getComments();
-    }, [])
-
     return [allComments, getComments];
 }
