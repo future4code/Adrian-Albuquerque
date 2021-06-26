@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createComment } from '../../requests/CreateContent';
 import useInputData from '../../hooks/useInputData';
 import { TextField } from '@material-ui/core';
 import '../../styles/button.scss';
 import './createcommentary.scss';
 
-export function CreateCommentary({ id, getComments, setCommentCounter }) {
+export function CreateCommentary({ id, getComments, setCommentCounter, getPosts }) {
     const { data, onChange, clear } = useInputData({ body: "" });
+    useEffect(() => {
+        getComments();
+        getPosts();
+    }, [])
 
     const sendPost = (event) => {
         if (data !== "") {
             event.preventDefault();
             createComment(id, data, getComments, setCommentCounter);
             getComments();
+            getPosts();
             clear();
         }
     }

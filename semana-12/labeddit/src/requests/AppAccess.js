@@ -4,10 +4,10 @@ import { useHistory } from 'react-router-dom';
 
 export const login = async (body, history) => {
     const loginUser = await axios.post(`${BASE_URL}/users/login`, body)
-        .then((res => {
+        .then((res) => {
             localStorage.setItem("token", res.data.token);
             history.push("/")
-        }))
+        })
         .catch((err) => {
             alert(err.response.data)
         })

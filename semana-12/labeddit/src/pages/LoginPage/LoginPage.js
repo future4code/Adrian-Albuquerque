@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 import { Login } from '../../components/Login/Login';
 import '../../styles/accesscontent.scss';
 import { useHistory } from 'react-router-dom';
+import useUnProtectedPage from '../../hooks/useUnprotectedPage';
 function LoginPage() {
 
     document.title = "LabeEddit | Login";
+    useUnProtectedPage()
     const history = useHistory()
     const { data, onChange, clear } = useInputData({ email: "", password: "" });
     const onClickToSend = (event) => {

@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomePage from '../pages/HomePage/HomePage';
 import LoginPage from '../pages/LoginPage/LoginPage';
-import FeedPage from '../pages/FeedPage/FeedPage';
 import PostPage from '../pages/PostPage/PostPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
@@ -25,10 +24,6 @@ function Router() {
 
                 <Route exact path="/post">
                     <PostPage />
-                </Route>
-
-                <Route exact path="/feed">
-                    <FeedPage />
                 </Route>
 
                 <Route>

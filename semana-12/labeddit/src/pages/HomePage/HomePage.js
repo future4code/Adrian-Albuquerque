@@ -8,14 +8,11 @@ import { Header } from '../../components/Header/Header';
 import './homepage.scss';
 
 function HomePage() {
+    document.title = "LabeEddit | Página Inicial";
     useProtectedPage()
     const { data, onChange, clear } = useInputData({ title: "", body: "" });
     const [allPosts, getPosts] = useGetAllPosts([]);
 
-    useEffect(() => {
-        setTimeout(() => getPosts(), 1000)
-    }, [])
-    
     const sendPost = (event) => {
         event.preventDefault();
         createPost(data, getPosts);
@@ -28,12 +25,12 @@ function HomePage() {
                 const { id } = post
                 return (
                     <div key={id}>
-                        <ItemCard post={post} />
+                        <ItemCard post={post} getPosts={getPosts} />
                     </div>
                 )
             }) : <p>Carregando</p>
             }
         </div>
-    )
+    );
 };
 export default HomePage;

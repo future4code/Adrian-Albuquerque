@@ -10,7 +10,7 @@ import ThumbDownAltRoundedIcon from '@material-ui/icons/ThumbDownAltRounded';
 import clsx from 'clsx';
 import './card.scss';
 
-function ItemCard({ post }) {
+function ItemCard({ post, getPosts }) {
     const { id, title, commentCount, userId, createdAt, userVote, voteSum, username } = post;
     const [allComments, getComments] = useGetPostComments(id, []);
     const classes = useStyles();
@@ -48,13 +48,13 @@ function ItemCard({ post }) {
                 </CardContent>
 
                 <CardActions disableSpacing>
-                    <div className="interactionContainer">
-                        <div className="reactionIcons">
+                    <div className="interactionContainer" style={{justifyContent: "flex-end"}}>
+                        {/* <div className="reactionIcons">
                             <p>{voteSum || 0}</p>
                             <ThumbUpAltRoundedIcon style={{ margin: "0 5px" }} />
                             <p>{userVote || 0}</p>
                             <ThumbDownAltRoundedIcon style={{ margin: "0 5px" }}/>
-                        </div>
+                        </div> */}
 
                         <div className="commentIcon">
                             <p>Comentário({commentCount ? commentCount : 0})</p>
@@ -89,7 +89,7 @@ function ItemCard({ post }) {
                         })}
                     </div>
                 </Collapse>
-                <CreateCommentary id={id} getComments={getComments} />
+                <CreateCommentary id={id} getComments={getComments} getPosts={getPosts}/>
             </Card>
         </div>
     );

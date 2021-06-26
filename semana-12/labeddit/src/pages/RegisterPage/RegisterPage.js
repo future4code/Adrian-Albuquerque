@@ -3,18 +3,19 @@ import { useRegister } from '../../requests/AppAccess';
 import useInputData from '../../hooks/useInputData';
 import { Register } from '../../components/Register/Register';
 import '../../styles/accesscontent.scss';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import useUnProtectedPage from '../../hooks/useUnprotectedPage';
 function RegisterPage() {
     document.title = "LabeEddit | Registrar";
+    useUnProtectedPage();
     const { data, onChange, clear } = useInputData({ username: "", email: "", password: "" });
     const register = useRegister("/users/signup", data);
-
-
     const onClickToSend = (event) => {
         event.preventDefault();
         register();
         clear();
     }
+
     return (
         <div id="accessContainer">
             <div className="formContainer">

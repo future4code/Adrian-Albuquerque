@@ -9,7 +9,7 @@ export const useGetAllPosts = (initialState) => {
         const token = window.localStorage.getItem('token')
         if (token) {
             getPost()
-        }
+        } 
     }, [])
 
     const getPost = () => {
