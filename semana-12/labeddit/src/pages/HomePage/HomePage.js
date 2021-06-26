@@ -18,6 +18,10 @@ function HomePage() {
         createPost(data, getPosts);
         clear();
     }
+    useEffect(() => {
+        getPosts()
+    }, [])
+
     return (
         <div id="homePageContainer">
             <Header sendPost={sendPost} onChange={onChange} data={data} />
