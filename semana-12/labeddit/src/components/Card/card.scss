@@ -1,0 +1,52 @@
+@import "../../styles/color.scss";
+
+#cardContainer {
+  justify-content: center;
+  display: flex;
+  margin: 10px;
+
+  .commentaryOnCollapse {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .commentaryOnCollapse_Top {
+      display: flex;
+      align-items: center;
+      > p {
+        padding: 0 10px;
+        font: 700 0.925rem "Poppins", "Roboto", sans-serif;
+      }
+    }
+
+    > p {
+     padding: 0 10px;
+     margin-left: 40px;
+     font: 400 0.925rem "Roboto", sans-serif;
+     inline-size: 90%;
+    }
+  }
+
+  .interactionContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+
+    .reactionIcons {
+      display: flex;
+      align-items: center;
+
+    }
+    .commentIcon {
+      display: flex;
+      align-items: center;
+
+    }
+  }
+
+
+  .overFlow {
+    overflow-wrap: break-word;
+  }
+}

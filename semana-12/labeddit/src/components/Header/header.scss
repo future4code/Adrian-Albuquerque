@@ -1,0 +1,38 @@
+@import "../../styles/color.scss";
+
+header {
+  > div {
+    background-color: $white;
+  }
+
+  .logoutButton {
+    height: 50px;
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+    align-items: center;
+    text-align: end;
+    justify-content: space-between;
+
+    img {
+      height: 100%;
+    }
+
+    span {
+      padding: 0 20px;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: $reddit-orange;
+      }
+    }
+  }
+
+  #headerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+  }
+}
