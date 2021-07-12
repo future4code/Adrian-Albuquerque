@@ -1,0 +1,13 @@
+{
+  "name": "ex02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ex02.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ex02": "node ex02.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
