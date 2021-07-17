@@ -2,13 +2,11 @@ import { Request, Response } from "express";
 import { Statement, User } from "../types";
 import { users } from "../database";
 import { calculateAge } from "../functions/calculateAge";
+import { dateNow } from "../functions/dateNow";
+
 export const postRegisterUser = (req: Request, res: Response): void => {
   let errorCode: number = 400;
-  const registerDate = new Date();
-  const registerDay = registerDate.getDate();
-  const registerMonth = registerDate.getMonth();
-  const registerYear = registerDate.getFullYear();
-  const registerUser = `${registerDay}/${registerMonth}/${registerYear}`;
+  const registerUser = dateNow();
   try {
     const { name, cpf, date } = req.body;
 

@@ -9,7 +9,7 @@ export type User = {
 export type Statement = [
   {
     value: number;
-    data: string;
+    date: string;
     description: string;
   }
 ];
