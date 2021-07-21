@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import connection from "../connection";
+import validateUserId from "../functions/validadeUserId";
 
 const updateUserSalaryId = async (
   req: Request,
@@ -13,10 +14,8 @@ const updateUserSalaryId = async (
       errorCode = 422;
       throw new Error("Invalid Querry or Id");
     }
-    const userValidate = await connection.raw(
-      `SELECT * FROM Actor WHERE ${id} = id`
-    );
-    if (!userValidate[0].length) {
+    const userValidate = validateUserId(id);
+    if (!userValidate) {
       errorCode = 404;
       throw new Error("User not found");
     }
