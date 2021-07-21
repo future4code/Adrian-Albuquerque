@@ -14,8 +14,8 @@ const updateUserSalaryId = async (
       errorCode = 422;
       throw new Error("Invalid Querry or Id");
     }
-    const userValidate = validateUserId(id);
-    if (!userValidate) {
+    const userValidate = await validateUserId(id);
+    if (userValidate) {
       errorCode = 404;
       throw new Error("User not found");
     }

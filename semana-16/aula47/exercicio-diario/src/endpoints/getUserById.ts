@@ -12,8 +12,8 @@ const getUserById = async (req: Request, res: Response) => {
       throw new Error("ID not a number");
     }
 
-    const userValidate = validateUserId(id);
-    if (!userValidate) {
+    const userValidate = await validateUserId(id);
+    if (userValidate) {
       errorCode = 404;
       throw new Error("User not found");
     }
