@@ -15,7 +15,7 @@ const getUserAvgSalaryByGender = async (
     const avgSalary = await connection.raw(
       `SELECT AVG(salary) FROM Actor WHERE gender = "${gender}"`
     );
-    console.log(avgSalary[0][0]);
+
     res.status(200).send(avgSalary[0])
   } catch (error) {
     if (error instanceof Error) {
