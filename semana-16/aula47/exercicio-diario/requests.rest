@@ -9,3 +9,10 @@ GET  http://localhost:3003/users/Tony Ramos
 ####
 
 GET http://localhost:3003/users/male
+
+###
+
+PUT http://localhost:3003/users/update/004?salary=14343949
+
+###
+

@@ -9,9 +9,9 @@ c) Faça uma função que receba um gender retorne a quantidade de itens na tabe
 
 ### Exercício 2
 
-a) 
-- 
-b)
-- 
-c)
-- 
+a) Uma função que receba um salário e um id e realiza a atualização do salário do ator em questão
+- funcao ***updateUserSalaryId***
+b) Uma função que receba um id e delete um ator da tabela
+- funcao ***deleteUser***
+c) Uma função que receba um gender e devolva a média dos salários de atrizes ou atores desse gender
+- funcao ***getAvgSalary***
