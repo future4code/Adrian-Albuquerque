@@ -1,6 +1,7 @@
 import app from "./app";
 import deleteUserById from "./endpoints/deleteUserById";
 import getAllUsers from "./endpoints/getAllUsers";
+import getUserAvgSalaryByGender from "./endpoints/getuserAvgSalaryByGender";
 import getUserByGender from "./endpoints/getUserByGender";
 import getUserById from "./endpoints/getUserById";
 import getUserByName from "./endpoints/getUserByName";
@@ -12,3 +13,4 @@ app.get("/list/users", getAllUsers)
 app.get("/users/filter/:gender", getUserByGender);
 app.put("/users/update/:id", updateUserSalaryId);
 app.delete("/users/delete/:id", deleteUserById);
+app.get("/users/average/salary", getUserAvgSalaryByGender)
