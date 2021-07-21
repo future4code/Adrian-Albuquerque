@@ -1,0 +1,11 @@
+###
+
+GET http://localhost:3003/001
+
+###
+
+GET  http://localhost:3003/users/Tony Ramos
+
+####
+
+GET http://localhost:3003/users/male
