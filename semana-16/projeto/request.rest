@@ -3,9 +3,9 @@ PUT http://localhost:3003/user
 Content-Type: application/json
 
  {
-     "name": "fsdfsdgffsd",
-     "nickname": "gfgfd",
-     "email": "aaagfdgfgdf"
+     "name": "fsdfsdgfdggffsd",
+     "nickname": "gbgfdfgfd",
+     "email": "aaagfdgfdgfgdf"
  }
 
 ###
@@ -46,6 +46,7 @@ GET http://localhost:3003/task/43
 
 ###
 
-GET http://localhost:3003/
+###
 
+GET http://localhost:3003/user/all
 ###
