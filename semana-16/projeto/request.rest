@@ -27,7 +27,20 @@ Content-Type: application/json
 ###
 
 
+###
 
+PUT http://localhost:3003/task
+Content-Type: application/json
+
+{
+    "title": "gfgdfgdfgdhfghfgf",
+    "description": "gfdhghhghfgdfgdf",
+    "limitDate": "04/02/2020",
+    "creatorUserId": "43"
+
+}
+
+###
 
 
 ###
