@@ -10,9 +10,9 @@ POST http://localhost:3003/create
 Content-Type: application/json
 
  {
-     "name": "fsdfsdfsd",
-     "nickname": "gfd",
-     "email": "aaagfdgdf"
+     "name": "fsdfsdgffsd",
+     "nickname": "gfgfd",
+     "email": "aaagfdgfgdf"
  }
 
  ###

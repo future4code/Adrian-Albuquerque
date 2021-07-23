@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import connection from "../connection";
+import { User } from "../types";
 
 const postCreateuser = async (req: Request, res: Response): Promise<void> => {
   let errorCode = 400;
@@ -9,23 +10,18 @@ const postCreateuser = async (req: Request, res: Response): Promise<void> => {
       errorCode = 400;
       throw new Error("Invalid body");
     }
-    console.log(name, nickname, email);
 
-    await connection.raw(`
-    INSERT INTO TodoListUser(id, name, nickname, email)
-        VALUES(
-            ${Date.now().toString()},
-            "${name}",
-            "${nickname}",
-            "${email}"
-            `);
-
+    const id = Date.now().toString();
+    const newUser: User = { id, name, nickname, email };
+    await connection("TodoListUser").insert(newUser);
     res.status(201).send("User created !");
+    
   } catch (error) {
     if (error instanceof Error) {
       res.status(errorCode).send({ message: error.message });
     }
   }
 };
+
 
 export default postCreateuser;
