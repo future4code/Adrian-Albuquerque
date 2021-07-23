@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import connection from "../connection";
 import { Task } from "../types";
+import userValidade from "../functions/userValidade";
 
 const putCreateTask = async (req: Request, res: Response): Promise<void> => {
   let errorCode = 400;
@@ -13,11 +14,19 @@ const putCreateTask = async (req: Request, res: Response): Promise<void> => {
       throw new Error("invalid body, check your fields");
     }
 
+    const validation = await userValidade(creatorUserId);
+
+    if (validation) {
+      errorCode = 404;
+      throw new Error("user not found");
+    }
+
     const id = Date.now().toString();
     const splitDate = limitDate.split("/");
     const date = `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`;
 
     const status = taskStatus ? taskStatus : "to_do";
+
     const task: Task = {
       id,
       title,
@@ -26,7 +35,7 @@ const putCreateTask = async (req: Request, res: Response): Promise<void> => {
       status,
       creator_user_id: creatorUserId,
     };
-    
+
     await connection("TodoListTask").insert(task);
 
     res.status(201).send("task created!");
