@@ -1,0 +1,26 @@
+###
+GET http://localhost:3003/list/users
+
+###
+
+GET http://localhost:3003/04343
+
+###
+
+GET  http://localhost:3003/users/Tony Ramos
+
+####
+
+GET http://localhost:3003/users/male
+
+###
+
+PUT http://localhost:3003/users/update/004?salary=14343949
+
+###
+
+DELETE http://localhost:3003/users/delete/4430
+
+###
+
+GET  http://localhost:3003/users/average/salary?gender=male
