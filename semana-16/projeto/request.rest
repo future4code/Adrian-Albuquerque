@@ -1,0 +1,19 @@
+###
+GET http://localhost:3003/
+
+###
+
+GET http://localhost:3003/users/43
+
+###
+POST http://localhost:3003/create
+Content-Type: application/json
+
+ {
+     "name": "fsdfsdfsd",
+     "nickname": "gfd",
+     "email": "aaagfdgdf"
+ }
+
+ ###
+
