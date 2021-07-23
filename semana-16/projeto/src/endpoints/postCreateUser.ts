@@ -9,9 +9,9 @@ const postCreateuser = async (req: Request, res: Response): Promise<void> => {
       errorCode = 400;
       throw new Error("Invalid body");
     }
-
-    await connection.raw(`INSERT INTO TodoListUser(name, nickname, email)
-        VALUES("${name}" "${nickname}" "${email}"`);
+    console.log(name, nickname, email);
+    await connection.raw(`INSERT INTO TodoListUser(id, name, nickname, email)
+        VALUES("46453" "${name}" "${nickname}" "${email}";`);
 
     res.status(201).send("User created !");
   } catch (error) {
