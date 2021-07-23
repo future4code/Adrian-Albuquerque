@@ -1,8 +1,13 @@
 import app from "./app";
 import getAllUsers from "./endpoints/getAllUsers";
 import getUserById from "./endpoints/getUserById";
-import postCreateuser from "./endpoints/postCreateUser";
+import putCreateuser from "./endpoints/putCreateUser";
+import putUpdateUserData from "./endpoints/putUpdateUserData";
 
-app.get("/", getAllUsers);
+
+app.put("/user", putCreateuser);
 app.get("/users/:id", getUserById);
-app.post("/create", postCreateuser);
+app.put("/user/edit/:id", putUpdateUserData);
+
+
+app.get("/user/all", getAllUsers);

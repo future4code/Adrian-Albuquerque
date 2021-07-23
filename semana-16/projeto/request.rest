@@ -1,12 +1,5 @@
 ###
-GET http://localhost:3003/
-
-###
-
-GET http://localhost:3003/users/43
-
-###
-POST http://localhost:3003/create
+PUT http://localhost:3003/user
 Content-Type: application/json
 
  {
@@ -15,5 +8,30 @@ Content-Type: application/json
      "email": "aaagfdgfgdf"
  }
 
- ###
+###
 
+###
+
+GET http://localhost:3003/users/43
+
+###
+
+PUT http://localhost:3003/user/edit/43
+Content-Type: application/json
+
+{
+"name": "OMG DEU BOM",
+"nickname": "gfdgfd"
+}
+
+###
+
+
+
+
+
+###
+
+GET http://localhost:3003/
+
+###
