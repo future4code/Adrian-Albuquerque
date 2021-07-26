@@ -11,4 +11,6 @@ INSERT INTO relational_product VALUES
 ('ygv','cebola', 12.00, 'c'),
 ('ijn','camarão', 21.50, 'd'),
 ('tfc','lula', 22.00, 'd');
+
 SELECT * FROM relational_product;
+
