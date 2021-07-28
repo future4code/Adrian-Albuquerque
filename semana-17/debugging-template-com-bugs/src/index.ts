@@ -5,7 +5,7 @@ import cors from "cors";
 import { AddressInfo } from "net";
 import { signUp } from "./endpoints/signup";
 import { login } from "./endpoints/login";
-import { getFeed } from "./endpoints/getFeed";
+// import { getFeed } from "./endpoints/getFeed";
 
 dotenv.config();
 
@@ -26,7 +26,7 @@ app.use(cors())
 
 app.post("/users/signup", signUp);
 app.post("/users/login", login);
-app.get("/recipes/feed", getFeed);
+// app.get("/recipes/feed", getFeed);
 
 const server = app.listen(process.env.PORT || 3003, () => {
    if (server) {
