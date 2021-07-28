@@ -1,0 +1,52 @@
+###
+PUT http://localhost:3003/user
+Content-Type: application/json
+
+ {
+     "name": "fsdfsdgfdggffsd",
+     "nickname": "gbgfdfgfd",
+     "email": "aaagfdgfdgfgdf"
+ }
+
+###
+
+###
+
+GET http://localhost:3003/users/43
+
+###
+
+PUT http://localhost:3003/user/edit/43
+Content-Type: application/json
+
+{
+"name": "OMG DEU BOM",
+"nickname": "gfdgfd"
+}
+
+###
+
+
+###
+
+PUT http://localhost:3003/task
+Content-Type: application/json
+
+{
+    "title": "gfgdfgdfgdhfghfgf",
+    "description": "gfdhghhghfgdfgdf",
+    "limitDate": "04/02/2020",
+    "creatorUserId": "43"
+
+}
+
+###
+
+GET http://localhost:3003/task/43
+
+###
+
+###
+
+GET http://localhost:3003/user/all
+###

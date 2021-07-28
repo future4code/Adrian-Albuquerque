@@ -12,8 +12,8 @@ INSERT INTO relational_account VALUES
 SELECT * FROM relational_user;
 
 
-- A chave extrangeira user_id faz referencia a coluna id da tabela relational_user
-
-- Se akgyna das colubas é lida ou alterada com muitissima mais frequencia
-- mais frequencia do que as demais, talvez valha a pena guardar em tabelas
-- diferentes.
+Porque guardamos esses valores em tabelas diferentes?
+○ Eventualmente, por questões de performance:
+■ Se alguma das colunas é lida ou alterada com
+muitíssima mais frequência do que as demais, talvez
+valha a pena guardar em tabelas diferentes.
