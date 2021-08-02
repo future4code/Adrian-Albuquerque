@@ -75,7 +75,7 @@ class Bank {
   private accounts: UserAccount[];
 
   setAccounts = (accounts: UserAccount[]) => {
-    return this.accounts = accounts
+    return (this.accounts = accounts);
   };
   getAccounts = () => {
     return this.accounts;
@@ -91,10 +91,10 @@ console.log(userAccount);
 
 const transaction = new Transaction("fsfd", 14, "sdsds");
 
-const bank = new Bank(userAccount)
+const bank = new Bank(userAccount);
 
-console.log(bank)
+console.log(bank);
 
-const aaa = bank.getAccounts()
+const aaa = bank.getAccounts();
 
-console.log(aaa)
+console.log(aaa);
