@@ -1,5 +1,3 @@
-import { throws } from "assert";
-
 export enum GENDER {
   MALE = "MALE",
   FEMALE = "FEMALE",
