@@ -9,23 +9,33 @@ app.put("/character", createCharacter);
 app.delete("/character/:id", deleteCharacter);
 app.get("/character/:id", getCharacterById);
 
-// app.get("/movie/:id/characters")
-
-// app.get("/movies")
-// app.delete("/movies")
-
 type transaction = {
   description: string;
   value: number;
   date: string;
 };
-
 class UserAccount {
   private cpf: string;
   private name: string;
   private age: number;
   private balance: number = 0;
   private transactions: transaction[] = [];
+
+  public getCpf = (): string => {
+    return this.cpf;
+  };
+
+  public getName = (): string => {
+    return this.name;
+  };
+
+  public getAge = (): number => {
+    return this.age;
+  };
+
+  public getBalance = (): number => {
+    return this.balance;
+  };
 
   constructor(cpf: string, name: string, age: number) {
     console.log("Chamando o construtor da classe UserAccount");
@@ -34,7 +44,6 @@ class UserAccount {
     this.age = age;
   }
 }
-
 class Transaction {
   private description: string;
   private value: number;
@@ -74,6 +83,11 @@ class Transaction {
 class Bank {
   private accounts: UserAccount[];
 
+  public setUser(cpf: string, name: string, age: number) {
+    const newUser = new UserAccount(cpf, name, age);
+    this.accounts.push(newUser);
+  }
+
   setAccounts = (accounts: UserAccount[]) => {
     return (this.accounts = accounts);
   };
@@ -81,20 +95,15 @@ class Bank {
     return this.accounts;
   };
 
-  constructor(accounts: any) {
+  constructor(accounts: UserAccount[]) {
     this.accounts = accounts;
   }
+
+  userAccount = new UserAccount("443294923", "aaaaaaa", 20);
 }
 
 const userAccount = new UserAccount("443294923", "aaaaaaa", 20);
-console.log(userAccount);
 
 const transaction = new Transaction("fsfd", 14, "sdsds");
 
-const bank = new Bank(userAccount);
-
-console.log(bank);
-
-const aaa = bank.getAccounts();
-
-console.log(aaa);
+console.log(userAccount.getCpf()); // retornando o valor do CPF
