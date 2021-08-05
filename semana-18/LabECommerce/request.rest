@@ -1,0 +1,10 @@
+post http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "aaa",
+    "email": "aaaaaa",
+    "age": 19
+}
+
+###
