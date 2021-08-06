@@ -12,3 +12,19 @@ Content-Type: application/json
 GET http://localhost:3003/user
 
 ###
+
+POST http://localhost:3003/product
+Content-Type: application/json
+
+{
+    "name": "produto1",
+    "description": "produto legal",
+    "price": 19
+}
+
+
+###
+
+GET http://localhost:3003/product
+
+###

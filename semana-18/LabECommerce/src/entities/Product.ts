@@ -1,7 +1,10 @@
 class Product {
-  constructor(product_id: string, name: string, description: string, price: number) {
-
-  }
+  constructor(
+    private id: string,
+    private name: string,
+    private description: string,
+    private price: number
+  ) {}
 }
 
-export default Product
+export default Product;

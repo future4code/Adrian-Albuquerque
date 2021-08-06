@@ -14,10 +14,8 @@ async function postCreateUser(req: Request, res: Response): Promise<void> {
     const id = Date.now().toString();
     const newUser: User = new User(id, name, email, age);
 
-    console.log(newUser);
-
     await UserDatabase.createUser(newUser);
-    res.status(HttpStatus.CREATED).send(newUser);
+    res.status(HttpStatus.CREATED).send("Created");
   } catch (error) {
     if (error instanceof Error) {
       res.status(errorCode).send({ message: error.message });
