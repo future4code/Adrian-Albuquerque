@@ -11,12 +11,11 @@ class UserDatabase extends BaseDatabase {
     await BaseDatabase.connection("labcommerce_user").insert(newUser);
   };
 
-  public static getUser = async (id: string | undefined): Promise<User> => {
+  public static getUser = async (id: any): Promise<User> => {
     console.log(id);
     if (id) {
-      const result = await BaseDatabase.connection.raw(`
-      SELECT * FROM labcommerce_user WHERE id = ${id}
-      `);
+      const result = await BaseDatabase.connection("labcommerce_user").where({ id });
+
       return result[0];
     } else {
       return await BaseDatabase.connection("labcommerce_user");

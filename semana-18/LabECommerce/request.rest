@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3003/user
+GET http://localhost:3003/user?id=
 
 ###
 
@@ -17,14 +17,14 @@ POST http://localhost:3003/product
 Content-Type: application/json
 
 {
-    "name": "produto1",
-    "description": "produto legal",
+    "name": "produto12",
+    "description": "produto legalgfd",
     "price": 19
 }
 
 
 ###
 
-GET http://localhost:3003/product
+GET http://localhost:3003/product?id=1628286920497
 
 ###

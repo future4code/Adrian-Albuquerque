@@ -5,7 +5,7 @@ import { HttpStatus } from "../entities/Error";
 const getProducts = async (req: Request, res: Response): Promise<void> => {
   let errorCode = HttpStatus.FORBIDDEN;
   try {
-    const id = String(req.query.id) || undefined;
+    const id = req.query.id
     console.log(id);
     const result = await ProductDatabase.getProducts(id);
     res.status(HttpStatus.OK).send(result);

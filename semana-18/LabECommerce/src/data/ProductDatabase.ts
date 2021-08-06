@@ -10,13 +10,13 @@ class ProductDatabase extends BaseDatabase {
     await BaseDatabase.connection("labcommerce_product").insert(newProduct);
   };
 
-  public static getProducts = async (
-    id: string | undefined
-  ): Promise<Product[]> => {
+  public static getProducts = async (id: any): Promise<Product[]> => {
     if (id) {
-      return await BaseDatabase.connection.raw(`
-      SELECT * FROM labcommerce_product WHERE id = ${id}
-      `)
+      const result = await BaseDatabase.connection("labcommerce_product").where(
+        { id }
+      );
+
+      return result[0];
     } else {
       return await BaseDatabase.connection("labcommerce_product");
     }
