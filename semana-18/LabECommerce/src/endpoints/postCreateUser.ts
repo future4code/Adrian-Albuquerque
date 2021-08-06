@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import BaseDatabase from "../data/BaseDatabase";
 import UserDatabase from "../data/UserDatabase";
 import { HttpStatus } from "../entities/Error";
 import User from "../entities/User";
