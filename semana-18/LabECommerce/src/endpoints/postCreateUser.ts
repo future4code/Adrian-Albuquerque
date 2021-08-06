@@ -11,8 +11,8 @@ function postCreateUser(req: Request, res: Response) {
       throw new Error("Invalid fields !");
     }
     const newUser = new User(name, email, age);
-    console.log(newUser)
-    res.status(200).send( newUser)
+    console.log(newUser);
+    res.status(HttpStatus.CREATED).send(newUser);
   } catch (error) {
     if (error instanceof Error) {
       res.status(errorCode).send({ message: error.message });
