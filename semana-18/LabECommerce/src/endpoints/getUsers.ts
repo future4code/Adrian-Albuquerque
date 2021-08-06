@@ -6,7 +6,7 @@ import User from "../entities/User";
 const getUsers = async (req: Request, res: Response): Promise<void> => {
   let errorCode = 400;
   try {
-    const id = req.query.id;
+    const id = String(req.query.id) || undefined;
     console.log(id);
     const users: User | User[] = await UserDatabase.getUser(id);
 

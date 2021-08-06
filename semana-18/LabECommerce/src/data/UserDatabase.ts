@@ -11,7 +11,7 @@ class UserDatabase extends BaseDatabase {
     await BaseDatabase.connection("labcommerce_user").insert(newUser);
   };
 
-  public static getUser = async (id: any): Promise<User> => {
+  public static getUser = async (id: string | undefined): Promise<User> => {
     console.log(id);
     if (id) {
       const result = await BaseDatabase.connection.raw(`
