@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { User } from "../entities/User";
 import { EmailValidate } from "../services/emailValidate";
 import { UserDataBase } from "../data/UserDabaBase";
+import { AuthenticationData, user } from "../types";
+import { Authenticator } from "../services/Authenticator";
 
 export const createUser = async (
   req: Request,
@@ -21,8 +23,12 @@ export const createUser = async (
     }
 
     const newUser = new User(email, password);
+    console.log(newUser.id);
 
     await UserDataBase.createUser(newUser);
+
+    const auth = new Authenticator().generateToken(newUser.id);
+    console.log(auth);
     res.status(201).send({ message: "usuario criado" });
   } catch (err) {
     if (err instanceof Error) {
