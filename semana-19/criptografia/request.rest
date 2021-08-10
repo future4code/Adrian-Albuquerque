@@ -1,0 +1,21 @@
+POST http://localhost:3003/create
+Content-Type: application/json
+
+{
+    "email": "testeee@fffd.com",
+    "password": "123456"
+}
+
+###
+
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+   "email": "testeee@fffd.com",
+    "password": "123456"
+}
+
+###
+
+GET http://localhost:3003/user/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Mjg1NTgyNTksImV4cCI6MTYyODY0NDY1OX0.uwUMLlXkQI80Zu0xxv5hUumQP5nevdh8TcyyNgqlpTc
