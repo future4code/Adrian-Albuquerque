@@ -1,4 +1,6 @@
 import { User } from "../entities/User";
+import { Authenticator } from "../services/Authenticator";
+import { loginData } from "../types";
 import BaseDatabase from "./BaseDatabase";
 
 export class UserDataBase extends BaseDatabase {
@@ -22,5 +24,14 @@ export class UserDataBase extends BaseDatabase {
     } else {
       return await BaseDatabase.connection("aula55usuarios");
     }
+  };
+
+  public static loginUser = async (loginData: loginData) => {
+    const { password, email } = loginData;
+    const result:any = await BaseDatabase.connection("aula55usuarios").where({
+      email,
+      password,
+    });
+    return new Authenticator().generateToken(result.id);
   };
 }

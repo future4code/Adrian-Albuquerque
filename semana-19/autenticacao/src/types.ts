@@ -7,3 +7,8 @@ export type user = {
 export interface AuthenticationData {
   id: string;
 }
+
+export type loginData = {
+  email: string;
+  password: string;
+};

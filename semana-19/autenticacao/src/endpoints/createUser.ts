@@ -16,7 +16,7 @@ export const createUser = async (
     if (!email || emailValidade === false) {
       throw new Error("Email não inserido ou inválido");
     }
-    if (!password || password.length < 5) {
+    if (!password || password.length < 6) {
       throw new Error(
         "Senha não inserida ou inválida, digite uma senha superior a 5 caracteres"
       );

@@ -18,7 +18,14 @@ export class Authenticator {
     return token;
   }
 
-//   getTokenData(): AuthenticationData {
-
-//   }
+  getTokenData(token: string) {
+    console.log(token)
+    const { JWT_KEY } = process.env;
+    console.log(JWT_KEY)
+    const payload = jwt.verify(token, JWT_KEY as string) as any;
+    const result = {
+      id: payload.id
+    };
+    return result;
+  }
 }
