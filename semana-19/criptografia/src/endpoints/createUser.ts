@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import connection from "../connection";
-import { AuthenticationData, user } from "../types";
+import { AuthenticationData, roles, user } from "../types";
 import { IdGenerator } from "../services/IdGenerator";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
@@ -11,7 +11,7 @@ export default async function createUser(
 ): Promise<void> {
   try {
     const { name, nickname, email, password } = req.body;
-    let role = req.body.role
+    let role = req.body.role;
 
     if (!name || !nickname || !email || !password) {
       res.statusCode = 422;
@@ -19,7 +19,9 @@ export default async function createUser(
         "Preencha os campos 'name','nickname', 'password' e 'email'"
       );
     }
-
+    if (!role || role.toLowerCase() !== "admin") {
+      role = "usuario";
+    }
     const [user] = await connection("to_do_list_users").where({ email });
 
     if (user) {
@@ -32,12 +34,19 @@ export default async function createUser(
     const hm = new HashManager();
     const cypherText = await hm.hash(password);
 
-    const newUser: user = { id, name, nickname, email, password: cypherText };
+    const newUser: user = {
+      id,
+      name,
+      nickname,
+      email,
+      password: cypherText,
+      role,
+    };
 
     await connection("to_do_list_users").insert(newUser);
 
     const auth = new Authenticator();
-    const idAuth: AuthenticationData = {id: newUser.id}
+    const idAuth: AuthenticationData = { id: newUser.id, role };
     const token = auth.generateToken(idAuth);
 
     res.status(201).send({ token });

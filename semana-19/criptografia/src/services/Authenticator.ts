@@ -5,7 +5,7 @@ export class Authenticator {
     generateToken(info: AuthenticationData): string{
 
         const token = jwt.sign(
-            {id: info.id},
+            {id: info.id, role: info.role},
             "meuSegredo",
             {expiresIn: "1h"}
         )

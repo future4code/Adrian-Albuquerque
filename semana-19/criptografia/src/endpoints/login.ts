@@ -27,7 +27,7 @@ export async function login(req: Request, res: Response) {
 
     //depois da transação com o banco
     const auth = new Authenticator();
-    const token = auth.generateToken({ id: user.id });
+    const token = auth.generateToken({ id: user.id, role: user.role });
 
     res.status(200).send({ token });
   } catch (error) {
