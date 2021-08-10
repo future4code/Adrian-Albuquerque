@@ -1,38 +1,49 @@
 import { Request, Response } from "express";
-import { User } from "../entities/User";
-import { EmailValidate } from "../services/emailValidate";
-import { UserDataBase } from "../data/UserDabaBase";
+import connection from "../connection";
 import { AuthenticationData, user } from "../types";
+import { IdGenerator } from "../services/IdGenerator";
 import { Authenticator } from "../services/Authenticator";
+import { HashManager } from "../services/HashManager";
 
-export const createUser = async (
+export default async function createUser(
   req: Request,
   res: Response
-): Promise<void> => {
-  let errorCode = 400;
+): Promise<void> {
   try {
-    const { email, password } = req.body;
-    const emailValidade = new EmailValidate().validadeEmail(email);
-    if (!email || emailValidade === false) {
-      throw new Error("Email não inserido ou inválido");
-    }
-    if (!password || password.length < 6) {
+    const { name, nickname, email, password } = req.body;
+    let role = req.body.role
+
+    if (!name || !nickname || !email || !password) {
+      res.statusCode = 422;
       throw new Error(
-        "Senha não inserida ou inválida, digite uma senha superior a 5 caracteres"
+        "Preencha os campos 'name','nickname', 'password' e 'email'"
       );
     }
 
-    const newUser = new User(email, password);
-    console.log(newUser.id);
+    const [user] = await connection("to_do_list_users").where({ email });
 
-    await UserDataBase.createUser(newUser);
+    if (user) {
+      res.statusCode = 409;
+      throw new Error("Email já cadastrado");
+    }
 
-    const auth = new Authenticator().generateToken(newUser.id);
-    console.log(auth);
-    res.status(201).send({ message: "usuario criado" });
-  } catch (err) {
-    if (err instanceof Error) {
-      res.status(errorCode).send({ message: err.message });
+    const id: string = new IdGenerator().generateId();
+
+    const hm = new HashManager();
+    const cypherText = await hm.hash(password);
+
+    const newUser: user = { id, name, nickname, email, password: cypherText };
+
+    await connection("to_do_list_users").insert(newUser);
+
+    const auth = new Authenticator();
+    const idAuth: AuthenticationData = {id: newUser.id}
+    const token = auth.generateToken(idAuth);
+
+    res.status(201).send({ token });
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).send({ message: error.message });
     }
   }
-};
+}

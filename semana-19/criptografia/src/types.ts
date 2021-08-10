@@ -1,14 +1,11 @@
 export type user = {
-  id: string;
-  password: string;
-  email: string;
-};
-
-export interface AuthenticationData {
-  id: string;
+   id: string
+   email: string
+   password: string
+   name: string
+   nickname: string
 }
 
-export type loginData = {
-  email: string;
-  password: string;
-};
+export interface AuthenticationData {
+   id: string
+}
