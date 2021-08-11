@@ -1,8 +1,8 @@
 import { User } from "../entities/User";
 import { BaseDatabase } from "./BaseDatabase";
 
-export class UserDatabase extends BaseDatabase {
-  public async createUser(user: User) {
+export  class UserDatabase extends BaseDatabase {
+  public static async createUser(user: User) {
     try {
       await BaseDatabase.connection("lbn_user").insert({
         id: user.getId(),

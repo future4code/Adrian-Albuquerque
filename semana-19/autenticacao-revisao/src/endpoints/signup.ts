@@ -31,7 +31,7 @@ export async function signup(req: Request, res: Response) {
 
     const newUser = new User(id, name, email, hashPassword, role);
 
-    await userDatabase.createUser(newUser);
+    await UserDatabase.createUser(newUser);
 
     const authenticator = new Authenticator();
     const token = authenticator.generate({ id, role });
