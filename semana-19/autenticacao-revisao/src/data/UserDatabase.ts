@@ -18,7 +18,7 @@ export class UserDatabase extends BaseDatabase {
     }
   }
 
-  public async findUserByEmail(email: string): Promise<any> {
+  public async findUserByEmail(email: string): Promise<User> {
     try {
       const emailValidate = await BaseDatabase.connection("lbn_user").where({
         email,
