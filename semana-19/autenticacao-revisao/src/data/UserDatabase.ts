@@ -1,7 +1,9 @@
+
+
 import { User } from "../entities/User";
 import { BaseDatabase } from "./BaseDatabase";
 
-export  class UserDatabase extends BaseDatabase {
+export class UserDatabase extends BaseDatabase {
   public static async createUser(user: User) {
     try {
       await BaseDatabase.connection("lbn_user").insert({
@@ -18,11 +20,12 @@ export  class UserDatabase extends BaseDatabase {
 
   public async findUserByEmail(email: string): Promise<any> {
     try {
-      console.log(email)
-      const user = await BaseDatabase.connection("lbn_user").where({ email });
-      return user[0]
+      const emailValidate = await BaseDatabase.connection("lbn_user").where({
+        email,
+      });
+      return emailValidate[0];
     } catch (error) {
-      throw new Error(error.sqlMessage || error.message);
+      throw new Error("Email já cadastrado");
     }
   }
 

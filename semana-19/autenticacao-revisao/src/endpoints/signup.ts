@@ -16,12 +16,11 @@ export async function signup(req: Request, res: Response) {
           "Insira corretamente as informações de 'name', 'email', 'password' e 'role'"
         );
     }
-    console.log("testeee");
-    // const user = await new UserDatabase().findUserByEmail(email);
-    console.log("passou");
-    // if (user) {
-    //   res.status(409).send("Esse email já está cadastrado!");
-    // }
+    const emailValidade = await new UserDatabase().findUserByEmail(email);
+
+    if (emailValidade) {
+      res.status(409).send("Esse email já está cadastrado!");
+    }
 
     const idGenerator = new IdGenerator();
     const id = idGenerator.generate();
@@ -38,6 +37,8 @@ export async function signup(req: Request, res: Response) {
 
     res.status(200).send({ message: "Usuário criado com sucesso", token });
   } catch (error) {
-    res.status(400).send(error.message);
+    if (error instanceof Error) {
+      res.status(400).send({ response: error.message });
+    }
   }
 }
