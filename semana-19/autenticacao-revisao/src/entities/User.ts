@@ -1,7 +1,4 @@
-export enum USER_ROLES {
-  NORMAL = "NORMAL",
-  ADMIN = "ADMIN",
-}
+import { newUser, USER_ROLES } from "../types";
 
 export class User {
   constructor(
@@ -28,7 +25,7 @@ export class User {
     return this.role;
   }
 
-  static toUserModel(data: any): User {
+  static toUserModel(data: newUser): User {
     return new User(data.id, data.name, data.email, data.password, data.role);
   }
 }
