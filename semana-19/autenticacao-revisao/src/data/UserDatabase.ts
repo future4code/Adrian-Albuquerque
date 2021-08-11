@@ -16,12 +16,11 @@ export  class UserDatabase extends BaseDatabase {
     }
   }
 
-  public async findUserByEmail(email: string): Promise<User> {
+  public async findUserByEmail(email: string): Promise<any> {
     try {
-      const user = await BaseDatabase.connection("lbn_user")
-        .select("*")
-        .where({ email });
-      return user[0] && User.toUserModel(user[0]);
+      console.log(email)
+      const user = await BaseDatabase.connection("lbn_user").where({ email });
+      return user[0]
     } catch (error) {
       throw new Error(error.sqlMessage || error.message);
     }

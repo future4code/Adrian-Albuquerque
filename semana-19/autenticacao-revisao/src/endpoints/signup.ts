@@ -16,12 +16,12 @@ export async function signup(req: Request, res: Response) {
           "Insira corretamente as informações de 'name', 'email', 'password' e 'role'"
         );
     }
-    const userDatabase = new UserDatabase();
-    const user = await userDatabase.findUserByEmail(email);
-
-    if (user) {
-      res.status(409).send("Esse email já está cadastrado!");
-    }
+    console.log("testeee");
+    // const user = await new UserDatabase().findUserByEmail(email);
+    console.log("passou");
+    // if (user) {
+    //   res.status(409).send("Esse email já está cadastrado!");
+    // }
 
     const idGenerator = new IdGenerator();
     const id = idGenerator.generate();

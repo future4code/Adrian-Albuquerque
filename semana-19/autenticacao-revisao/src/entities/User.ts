@@ -1,4 +1,8 @@
-import { newUser, USER_ROLES } from "../types";
+import { newUser } from "../types";
+export enum USER_ROLES {
+  NORMAL = "NORMAL",
+  ADMIN = "ADMIN",
+}
 
 export class User {
   constructor(
