@@ -4,7 +4,7 @@ import { BaseDatabase } from "./BaseDatabase";
 export class UserDatabase extends BaseDatabase {
   public static async createUser(user: User) {
     try {
-      await BaseDatabase.connection("lbn_user").insert({
+      await BaseDatabase.connection("cookenu_user").insert({
         id: user.getId(),
         name: user.getName(),
         email: user.getEmail(),
@@ -17,18 +17,20 @@ export class UserDatabase extends BaseDatabase {
 
   public async findUserByEmail(email: string): Promise<User> {
     try {
-      const emailValidate = await BaseDatabase.connection("lbn_user").where({
-        email,
-      });
+      const emailValidate = await BaseDatabase.connection("cookenu_user").where(
+        {
+          email,
+        }
+      );
       return emailValidate[0];
     } catch (error) {
-      throw new Error("Email já cadastrado");
+      throw new Error(error);
     }
   }
 
   public async getAllUsers(): Promise<User[]> {
     try {
-      const users = await BaseDatabase.connection("lbn_user").select(
+      const users = await BaseDatabase.connection("cookenu_user").select(
         "id",
         "name",
         "email",

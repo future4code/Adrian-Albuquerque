@@ -7,13 +7,13 @@ export type userPattern = {
   
   export class User {
     constructor(
-      private id: string,
+      public id: string,
       private name: string,
       private email: string,
-      private password: string
+      public password: string
     ) {}
   
-    public getId() {
+    public getId(): string {
       return this.id;
     }
     public getName() {
@@ -22,7 +22,7 @@ export type userPattern = {
     public getEmail() {
       return this.email;
     }
-    public getPassword() {
+    public getPassword = (): string => {
       return this.password;
     }
   

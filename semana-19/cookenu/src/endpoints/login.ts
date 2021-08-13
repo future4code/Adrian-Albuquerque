@@ -23,15 +23,17 @@ export async function login(req: Request, res: Response) {
     }
 
     const hashManager = new HashManager();
-    const passwordIsCorrect = hashManager.compare(password, user.getPassword());
+    console.log("hora do hash");
+    const passwordIsCorrect = hashManager.compare(password, user.password);
+    console.log("F");
 
     if (!passwordIsCorrect) {
       res.status(401).send("Email ou senha incorretos.");
     }
-
+    console.log("aaa");
     const authenticator = new Authenticator();
     const token = authenticator.generate({
-      id: user.getId(),
+      id: user.id,
     });
 
     res.status(200).send({ message: "Usuário logado com sucesso", token });
