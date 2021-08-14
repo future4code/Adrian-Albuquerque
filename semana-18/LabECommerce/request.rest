@@ -1,0 +1,30 @@
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "bbbbbbbb",
+    "email": "bbbbbb",
+    "age": 19
+}
+
+###
+
+GET http://localhost:3003/user?id=
+
+###
+
+POST http://localhost:3003/product
+Content-Type: application/json
+
+{
+    "name": "produto12",
+    "description": "produto legalgfd",
+    "price": 19
+}
+
+
+###
+
+GET http://localhost:3003/product?id=1628286920497
+
+###
