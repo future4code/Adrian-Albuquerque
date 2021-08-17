@@ -1,10 +1,9 @@
-import { insertUser } from "../../data/user/insertUser";
 import { user, userData } from "../../model/user";
 import { generateToken } from "../../services/authenticator";
 import { generateId } from "../../services/idGenerator";
 import { hash } from "../../services/hashManager";
 import { compare } from "bcryptjs";
-import { selectUserByEmail } from "../../data/user/selectUserByEmail";
+import { UserDatabase } from "../../database/user/user.database";
 
 export class UserApplication {
   public async signup(userData: userData): Promise<string> {
@@ -27,8 +26,8 @@ export class UserApplication {
       password: cypherPassword,
       id: generateId(),
     };
-
-    await insertUser(newUser);
+    const userDatabase = new UserDatabase();
+    await userDatabase.insertUser(newUser);
 
     const token: string = generateToken({
       id: newUser.id,
@@ -43,7 +42,7 @@ export class UserApplication {
       throw new Error("'email' e 'senha' são obrigatórios");
     }
 
-    const user: user = await selectUserByEmail(email);
+    const user = await new UserDatabase().selectByEmail(email);
 
     if (!user) {
       throw new Error("Usuário não encontrado ou senha incorreta");

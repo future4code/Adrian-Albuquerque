@@ -1,4 +1,4 @@
-import { selectTaskById } from "../../data/task/selectTaskById"
+import { selectTaskById } from "../../database/task/selectTaskById"
 
 export const getTaskByIdBusiness = async (
    id: string

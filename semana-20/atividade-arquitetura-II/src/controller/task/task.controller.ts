@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { createTaskBusiness } from "../../business/task/createTaskBusiness";
-import { getTaskByIdBusiness } from "../../business/task/getTaskByIdBusiness";
+import { createTaskBusiness } from "../../application/task/createTaskBusiness";
+import { getTaskByIdBusiness } from "../../application/task/getTaskByIdBusiness";
 
 export class TaskController {
   public async createTask(req: Request, res: Response) {

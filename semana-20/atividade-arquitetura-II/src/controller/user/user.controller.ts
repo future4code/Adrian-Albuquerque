@@ -1,8 +1,5 @@
 import { Request, Response } from "express";
-import { loginBusiness } from "../../business/user/loginBusiness";
-import { signupBusiness } from "../../business/user/signupBusiness";
-import { UserApplication } from "../../business/user/user.application";
-
+import { UserApplication } from "../../application/user/user.application";
 export class UserController {
   async signup(req: Request, res: Response) {
     const { name, nickname, email, password, role } = req.body;
@@ -25,7 +22,7 @@ export class UserController {
     try {
       const { email, password } = req.body;
 
-      const token: string = await loginBusiness(email, password);
+      const token: string = await new UserApplication().login(email, password);
 
       res.send({
         message: "Usuário logado!",

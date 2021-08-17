@@ -1,4 +1,4 @@
-import { insertTask } from "../../data/task/insertTask";
+import { insertTask } from "../../database/task/insertTask";
 import { taskData } from "../../model/task";
 import { generateId } from "../../services/idGenerator";
 
