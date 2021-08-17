@@ -12,7 +12,7 @@ export async function getProfile(req: Request, res: Response): Promise<void> {
 
     const userIdDescrypt = new Authenticator().getTokenData(Authorization);
     const userInfos = await new UserDatabase().findUserById(userIdDescrypt.id);
-    
+
     res.status(200).send(userInfos);
   } catch (err) {
     if (err instanceof Error) {

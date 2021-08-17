@@ -1,0 +1,29 @@
+import { connection } from "../connection"
+import { user } from "../../types/user"
+
+
+export const selectUserByEmail = async (
+   email: string
+): Promise<user | null> => {
+   try {
+      const result = await connection("semana20_users")
+         .select("*")
+         .where({ email })
+
+      if (!result[0]) {
+         return null
+      }
+      
+      return {
+         id: result[0].id,
+         name: result[0].name,
+         nickname: result[0].nickname,
+         email: result[0].email,
+         password: result[0].password,
+         role: result[0].role
+      }
+
+   } catch (error) {
+      throw new Error(error.slqMessage || error.message)
+   }
+}
