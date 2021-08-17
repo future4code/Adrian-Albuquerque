@@ -1,12 +1,10 @@
-import { app } from "./controller/app"
-import { signup } from './controller/user/signup'
-import { login } from './controller/user/login'
-import { createTask } from './controller/task/createTask'
-import { getTaskById } from './controller/task/getTaskById'
+import { app } from "./controller/app";
+import { createTask } from "./controller/task/createTask";
+import { getTaskById } from "./controller/task/getTaskById";
+import { userRouter } from "./routes/user.route";
 
-app.post('/user/signup', signup)
-app.post('/user/login', login)
+app.use("/user", userRouter);
 
-app.put('/task', createTask)
-app.get('/task/:id', getTaskById)
-
+app.use("/task");
+app.put("/task", createTask);
+app.get("/task/:id", getTaskById);
