@@ -7,13 +7,8 @@ import { UserDatabase } from "../../database/user/user.database";
 
 export class UserApplication {
   public async signup(userData: userData): Promise<string> {
-    if (
-      !userData.name ||
-      !userData.nickname ||
-      !userData.email ||
-      !userData.password ||
-      !userData.role
-    ) {
+    const { name, nickname, email, password, role } = userData;
+    if (!name || !nickname || !email || !password || !role) {
       throw new Error(
         'Preencha os campos "name","nickname", "email" e "password"'
       );
