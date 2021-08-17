@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
 import { loginBusiness } from "../../business/user/loginBusiness";
 import { signupBusiness } from "../../business/user/signupBusiness";
+import { UserApplication } from "../../business/user/user.application";
 
 export class UserController {
   async signup(req: Request, res: Response) {
     const { name, nickname, email, password, role } = req.body;
 
-    const token: string = await signupBusiness({
+    const token: string = await new UserApplication().signup({
       name,
       nickname,
       email,
