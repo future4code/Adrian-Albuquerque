@@ -5,6 +5,10 @@ import { userRouter } from "./routes/user.route";
 
 app.use("/user", userRouter);
 
-app.use("/task");
+app.use("/task")
+
+
+
+
 app.put("/task", createTask);
 app.get("/task/:id", getTaskById);
