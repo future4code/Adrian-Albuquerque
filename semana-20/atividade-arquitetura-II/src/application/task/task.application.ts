@@ -1,5 +1,4 @@
-import { insertTask } from "../../database/task/insertTask";
-import { selectTaskById } from "../../database/task/selectTaskById";
+import { TaskDatabase } from "../../database/task/task.database";
 import { taskData, taskReturn } from "../../model/task";
 import { generateId } from "../../services/idGenerator";
 
@@ -14,14 +13,14 @@ export class TaskApplication {
 
     const id: string = generateId();
 
-    await insertTask({
+    await new TaskDatabase().insertTask({
       id,
       ...taskData,
     });
   }
 
   async getTasksById(id: string) {
-    const result = await selectTaskById(id);
+    const result = await new TaskDatabase().selectTaskById(id);
 
     if (!result) {
       throw new Error("Tarefa não encontrada");

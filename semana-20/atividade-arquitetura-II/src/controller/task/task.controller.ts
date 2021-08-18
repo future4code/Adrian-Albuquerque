@@ -1,13 +1,11 @@
 import { Request, Response } from "express";
-import { createTaskBusiness } from "../../application/task/createTaskBusiness";
-import { getTaskByIdBusiness } from "../../application/task/getTaskByIdBusiness";
-
+import { TaskApplication } from "../../application/task/task.application";
 export class TaskController {
   public async createTask(req: Request, res: Response) {
     try {
       const { title, description, deadline, authorId } = req.body;
 
-      await createTaskBusiness({
+      await new TaskApplication().createTask({
         title,
         description,
         deadline,
@@ -26,10 +24,9 @@ export class TaskController {
     try {
       const { id } = req.params;
 
-      const task = getTaskByIdBusiness(id);
+      const task = await new TaskApplication().getTasksById(id);
 
       res.status(200).send(task);
-      
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message);
