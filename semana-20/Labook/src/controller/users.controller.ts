@@ -6,7 +6,7 @@ export class UserController {
   public signup = async (req: Request, res: Response) => {
     try {
       const { name, email, password } = req.body;
-      console.log("ok");
+      // console.log("ok");
       const user = await new UserApplication().signup(name, email, password);
 
       if (!user) {
