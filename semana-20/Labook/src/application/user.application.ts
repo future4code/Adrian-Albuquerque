@@ -1,7 +1,7 @@
 import { UserDatabase } from "../database/UserDatabase";
 import { HashManager } from "../services/hash.service";
 import { IdGenerator } from "../services/idGenerator.service";
-import { AuthenticationData, Authenticator } from "../services/token.service";
+import { Authenticator } from "../services/token.service";
 import * as EmailValidator from "email-validator";
 
 import { user } from "../types";
@@ -52,20 +52,27 @@ export class UserApplication {
       if (!email || !password) {
         throw new Error("email ou senhas indefinidos");
       }
-      const databaseUser: any = await new UserDatabase().findByEmail(
+      const databaseUser: any = await new UserDatabase().findUser(
         email as string
       );
-      const test = await new HashManager().compare(
+
+      if (!databaseUser) {
+        throw new Error("usuario nao encontrado");
+      }
+
+      const passwordIsCorrect: boolean = await new HashManager().compare(
         password,
         databaseUser[0].password
       );
 
-      if (!test) {
+      if (!passwordIsCorrect) {
         throw new Error("senha invalida");
       }
+
       const token = new Authenticator().generate(databaseUser[0].id);
       return token;
     } catch (err) {
+      console.log("bateu aqui");
       if (err instanceof Error) {
         throw new Error(err.message);
       }

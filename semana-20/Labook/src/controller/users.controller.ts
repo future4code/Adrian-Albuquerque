@@ -3,7 +3,7 @@ import { UserApplication } from "../application/user.application";
 import { UserDatabase } from "../database/UserDatabase";
 
 export class UserController {
-  public signup = async (req: Request, res: Response) => {
+  public signup = async (req: Request, res: Response): Promise<void> => {
     try {
       const { name, email, password } = req.body;
       // console.log("ok");

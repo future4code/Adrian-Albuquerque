@@ -23,16 +23,12 @@ export class UserDatabase extends BaseDatabase {
     return token;
   };
 
-  findByName = async (name: string): Promise<any> => {
+  findUser = async (email: string): Promise<any> => {
     try {
       const findedUser = await BaseDatabase.connection("labook_users").where({
-        name,
+        email,
       });
-      if (!findedUser[0]) {
-        return findedUser[0];
-      } else {
-        return [];
-      }
+     return findedUser
     } catch (err) {
       if (err instanceof Error) {
         throw new Error(err.message);
