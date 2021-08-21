@@ -13,9 +13,9 @@ export class UserController {
         throw new Error("parametros invalidos");
       }
 
-      await new UserDatabase().create(user);
+      const token = await new UserDatabase().create(user);
 
-      res.status(201).send({ message: "User created!" });
+      res.status(201).send({ message: "User created!", token });
     } catch (err) {
       if (err instanceof Error) {
         res.status(400).send({ message: err.message });

@@ -5,11 +5,10 @@ dotenv.config();
 export interface AuthenticationData {
   id: string;
 }
-
 export class Authenticator {
   public generate(input: AuthenticationData): string {
     const token = jwt.sign(input, "fkdgdf", {
-      expiresIn: `${process.env.ACCESS_TOKEN_EXPIRES_IN}`,
+      expiresIn: "24h",
     });
     return token;
   }

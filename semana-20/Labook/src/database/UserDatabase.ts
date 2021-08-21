@@ -1,27 +1,26 @@
-import { user } from "../types";
+import { AuthenticationData, Authenticator } from "../services/token.service";
+import { authenticationData, user } from "../types";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
-  public create = async (user: user): Promise<void> => {
-    try {
-      const { id, name, email, password } = user;
+  public create = async (user: user): Promise<string> => {
+    const { id, name, email, password } = user;
 
-      const emailValidate: boolean = await this.findByEmail(email);
-      if (emailValidate) {
-        throw new Error("email já cadastrado");
-      }
-
-      await BaseDatabase.connection("labook_users").insert({
-        id,
-        name,
-        email,
-        password,
-      });
-    } catch (err) {
-      if (err instanceof Error) {
-        throw new Error(err.message);
-      }
+    const emailValidate: boolean = await this.findByEmail(email);
+    if (emailValidate) {
+      throw new Error("email já cadastrado");
     }
+
+    await BaseDatabase.connection("labook_users").insert({
+      id,
+      name,
+      email,
+      password,
+    });
+
+    const test: AuthenticationData = { id };
+    const token = await new Authenticator().generate(test);
+    return token;
   };
 
   findByName = async (name: string): Promise<any> => {
