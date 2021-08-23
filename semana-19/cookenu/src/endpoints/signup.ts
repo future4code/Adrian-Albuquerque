@@ -7,15 +7,20 @@ import { IdGenerator } from "../services/IdGenerator";
 
 export async function signup(req: Request, res: Response) {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, email, password } = req.body;
 
-    if (!name || !email || !password || !role) {
-      res
-        .status(422)
-        .send(
-          "Insira corretamente as informações de 'name', 'email', 'password' e 'role'"
-        );
+    if (!name || !email || !password) {
+      res.status(422).send({
+        message:
+          "Insira corretamente as informações de 'name', 'email', 'password'",
+      });
     }
+    if (password.length < 6) {
+      res
+        .status(403)
+        .send({ message: "Insira uma senha superior a 6 caracteres" });
+    }
+
     const emailValidade = await new UserDatabase().findUserByEmail(email);
 
     if (emailValidade) {
@@ -25,15 +30,14 @@ export async function signup(req: Request, res: Response) {
     const idGenerator = new IdGenerator();
     const id = idGenerator.generate();
 
-    const hashManager = new HashManager();
-    const hashPassword = await hashManager.hash(password);
+    const hashPassword = await new HashManager().hash(password);
 
-    const newUser = new User(id, name, email, hashPassword, role);
+    const newUser = new User(id, name, email, hashPassword);
 
     await UserDatabase.createUser(newUser);
 
     const authenticator = new Authenticator();
-    const token = authenticator.generate({ id, role });
+    const token = authenticator.generate({ id });
 
     res.status(200).send({ message: "Usuário criado com sucesso", token });
   } catch (error) {

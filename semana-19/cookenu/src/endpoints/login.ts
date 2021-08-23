@@ -1,9 +1,7 @@
 import { Request, Response } from "express";
 import { UserDatabase } from "../data/UserDatabase";
-import { User } from "../entities/User";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
-import { IdGenerator } from "../services/IdGenerator";
 
 export async function login(req: Request, res: Response) {
   try {
@@ -16,6 +14,7 @@ export async function login(req: Request, res: Response) {
           "Insira corretamente as informações de 'name', 'email', 'password' e 'role'"
         );
     }
+
     const userDatabase = new UserDatabase();
     const user = await userDatabase.findUserByEmail(email);
 
@@ -24,16 +23,17 @@ export async function login(req: Request, res: Response) {
     }
 
     const hashManager = new HashManager();
-    const passwordIsCorrect = hashManager.compare(password, user.getPassword());
+    console.log("hora do hash");
+    const passwordIsCorrect = hashManager.compare(password, user.password);
+    console.log("F");
 
     if (!passwordIsCorrect) {
       res.status(401).send("Email ou senha incorretos.");
     }
-
+    console.log("aaa");
     const authenticator = new Authenticator();
     const token = authenticator.generate({
-      id: user.getId(),
-      role: user.geRole(),
+      id: user.id,
     });
 
     res.status(200).send({ message: "Usuário logado com sucesso", token });
